@@ -1,0 +1,1 @@
+docker run -it -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=postgres -e POSTGRES_USER=postgres -d -p 5454:5432 --name autoparts postgres:latest
