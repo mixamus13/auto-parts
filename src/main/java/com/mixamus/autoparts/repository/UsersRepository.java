@@ -1,11 +1,13 @@
 package com.mixamus.autoparts.repository;
 
 import com.mixamus.autoparts.domain.User;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
 
 import java.util.Set;
 
 @Repository
+@EnableJpaRepositories
 public class UsersRepository {
 
     public static Set<Object> lists = Set.of(

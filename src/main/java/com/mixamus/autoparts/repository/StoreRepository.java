@@ -1,11 +1,13 @@
 package com.mixamus.autoparts.repository;
 
 import com.mixamus.autoparts.domain.Store;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
 
 import java.util.Set;
 
 @Repository
+@EnableJpaRepositories
 public class StoreRepository {
 
     public static Set setStore = Set.of(
