@@ -1,0 +1,592 @@
+openapi: 3.0.1
+info:
+  title: Swagger AutoParts
+  description: >-
+    This is a sample server PartStore server.  You can find out more about
+    Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net,
+    #swagger](http://swagger.io/irc/). For this sample, you can use the api key
+    `special-key` to test the authorization filters.
+  termsOfService: 'http://swagger.io/terms/'
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: 'http://swagger.io'
+servers:
+  - url: 'https://partstore.swagger.io/v2'
+  - url: 'http://partstore.swagger.io/v2'
+tags:
+  - name: part
+    description: Everything about your AutoParts
+    externalDocs:
+      description: Find out more
+      url: 'http://swagger.io'
+  - name: store
+    description: Access to Partstore orders
+  - name: user
+    description: Operations about user
+    externalDocs:
+      description: Find out more about our store
+      url: 'http://swagger.io'
+paths:
+  /part:
+    put:
+      tags:
+        - part
+      summary: Update an existing part
+      operationId: updatePart
+      requestBody:
+        description: Part object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Part'
+        required: true
+      responses:
+        '400':
+          description: Invalid ID supplied
+          content: {}
+        '404':
+          description: Part not found
+          content: {}
+        '405':
+          description: Validation exception
+          content: {}
+      security:
+        - partstore_auth:
+            - 'write:parts'
+            - 'read:parts'
+      x-codegen-request-body-name: body
+    post:
+      tags:
+        - part
+      summary: Add a new part to the store
+      operationId: addPart
+      requestBody:
+        description: Part object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Part'
+        required: true
+      responses:
+        '201':
+          description: Created new part
+          content: {}
+        '405':
+          description: Invalid input
+          content: {}
+      security:
+        - partstore_auth:
+            - 'write:parts'
+            - 'read:parts'
+      x-codegen-request-body-name: body
+  /part/find:
+    get:
+      tags:
+        - part
+      summary: Finds Parts by status
+      description: Multiple status values can be provided with comma separated strings
+      operationId: findPartsByStatus
+      parameters:
+        - name: status
+          in: query
+          description: Status values that need to be considered for filter
+          required: true
+          style: form
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+              default: available
+              enum:
+                - available
+                - pending
+                - sold
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Part'
+        '400':
+          description: Invalid status value
+          content: {}
+      security:
+        - partstore_auth:
+            - 'write:parts'
+            - 'read:parts'
+  '/part/{partId}':
+    get:
+      tags:
+        - part
+      summary: Find part by ID
+      description: Returns a single part
+      operationId: getPartById
+      parameters:
+        - name: partId
+          in: path
+          description: ID of part to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Part'
+        '400':
+          description: Invalid ID supplied
+          content: {}
+        '404':
+          description: Part not found
+          content: {}
+      security:
+        - api_key: []
+    post:
+      tags:
+        - part
+      summary: Updates a part in the store with form data
+      operationId: updatePartWithForm
+      parameters:
+        - name: partId
+          in: path
+          description: ID of part that needs to be updated
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                name:
+                  type: string
+                  description: Updated name of the part
+                status:
+                  type: string
+                  description: Updated status of the part
+      responses:
+        '405':
+          description: Invalid input
+          content: {}
+      security:
+        - partstore_auth:
+            - 'write:parts'
+            - 'read:parts'
+    delete:
+      tags:
+        - part
+      summary: Deletes a part
+      operationId: deletePart
+      parameters:
+        - name: api_key
+          in: header
+          schema:
+            type: string
+        - name: partId
+          in: path
+          description: Part id to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '400':
+          description: Invalid ID supplied
+          content: {}
+        '404':
+          description: Part not found
+          content: {}
+      security:
+        - partstore_auth:
+            - 'write:parts'
+            - 'read:parts'
+  '/part/{partId}/uploadImage':
+    post:
+      tags:
+        - part
+      summary: uploads an image
+      operationId: uploadFile
+      parameters:
+        - name: partId
+          in: path
+          description: ID of part to update
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                additionalMetadata:
+                  type: string
+                  description: Additional data to pass to server
+                file:
+                  type: string
+                  description: file to upload
+                  format: binary
+      responses:
+        '200':
+          description: successful operation
+          content: {}
+      security:
+        - partstore_auth:
+            - 'write:parts'
+            - 'read:parts'
+  /store/inventory:
+    get:
+      tags:
+        - store
+      summary: Returns part inventories by status
+      description: Returns a map of status codes to quantities
+      operationId: getInventory
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                  format: int32
+      security:
+        - api_key: []
+  /store/order:
+    post:
+      tags:
+        - store
+      summary: Place an order for a part
+      operationId: placeOrder
+      requestBody:
+        description: order placed for purchasing the part
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Order'
+        required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          description: Invalid Order
+          content: {}
+      x-codegen-request-body-name: body
+  '/store/order/{orderId}':
+    get:
+      tags:
+        - store
+      summary: Find purchase order by ID
+      description: >-
+        For valid response try integer IDs with value >= 1 and <= 10.
+        Other values will generated exceptions
+      operationId: getOrderById
+      parameters:
+        - name: orderId
+          in: path
+          description: ID of part that needs to be fetched
+          required: true
+          schema:
+            maximum: 10
+            minimum: 1
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          description: Invalid ID supplied
+          content: {}
+        '404':
+          description: Order not found
+          content: {}
+    delete:
+      tags:
+        - store
+      summary: Delete purchase order by ID
+      description: >-
+        For valid response try integer IDs with positive integer value.
+        Negative or non-integer values will generate API errors
+      operationId: deleteOrder
+      parameters:
+        - name: orderId
+          in: path
+          description: ID of the order that needs to be deleted
+          required: true
+          schema:
+            minimum: 1
+            type: integer
+            format: int64
+      responses:
+        '400':
+          description: Invalid ID supplied
+          content: {}
+        '404':
+          description: Order not found
+          content: {}
+  /user:
+    post:
+      tags:
+        - user
+      summary: Create user
+      description: This can only be done by the logged in user.
+      operationId: createUser
+      requestBody:
+        description: Created user object
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        default:
+          description: successful operation
+          content: {}
+      x-codegen-request-body-name: body
+  /user/login:
+    get:
+      tags:
+        - user
+      summary: Logs user into the system
+      operationId: loginUser
+      parameters:
+        - name: username
+          in: query
+          description: The user name for login
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: The password for login in clear text
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              description: date in UTC when token expires
+              schema:
+                type: string
+                format: date-time
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid username/password supplied
+          content: {}
+  /user/logout:
+    get:
+      tags:
+        - user
+      summary: Logs out current logged in user session
+      operationId: logoutUser
+      responses:
+        default:
+          description: successful operation
+          content: {}
+  '/user/{username}':
+    get:
+      tags:
+        - user
+      summary: Get user by user name
+      operationId: getUserByName
+      parameters:
+        - name: username
+          in: path
+          description: 'The name that needs to be fetched. Use user1 for testing. '
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid username supplied
+          content: {}
+        '404':
+          description: User not found
+          content: {}
+    put:
+      tags:
+        - user
+      summary: Updated user
+      description: This can only be done by the logged in user.
+      operationId: updateUser
+      parameters:
+        - name: username
+          in: path
+          description: name that need to be updated
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Updated user object
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        '400':
+          description: Invalid user supplied
+          content: {}
+        '404':
+          description: User not found
+          content: {}
+      x-codegen-request-body-name: body
+    delete:
+      tags:
+        - user
+      summary: Delete user
+      description: This can only be done by the logged in user.
+      operationId: deleteUser
+      parameters:
+        - name: username
+          in: path
+          description: The name that needs to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        '400':
+          description: Invalid username supplied
+          content: {}
+        '404':
+          description: User not found
+          content: {}
+components:
+  schemas:
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        partId:
+          type: integer
+          format: int64
+        quantity:
+          type: integer
+          format: int32
+        shipDate:
+          type: string
+          format: date-time
+        status:
+          type: string
+          description: Order Status
+          enum:
+            - placed
+            - approved
+            - delivered
+        complete:
+          type: boolean
+          default: false
+      xml:
+        name: Order
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        vin:
+          type: string
+        model:
+          maxLength: 60
+          minLength: 0
+          type: string
+        year:
+          maximum: 4
+          type: integer
+          format: int32
+      xml:
+        name: Category
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        phone:
+          type: string
+        userStatus:
+          type: integer
+          description: User Status
+          format: int32
+      xml:
+        name: User
+    Part:
+      type: object
+      properties:
+        category:
+          $ref: '#/components/schemas/Category'
+        status:
+          type: string
+          description: part status in the store
+          enum:
+            - available
+            - pending
+            - sold
+      xml:
+        name: Part
+  securitySchemes:
+    partstore_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: 'http://partstore.swagger.io/oauth/dialog'
+          scopes:
+            'write:parts': modify parts in your account
+            'read:parts': read your parts
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header
