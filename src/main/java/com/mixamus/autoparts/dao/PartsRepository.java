@@ -1,16 +1,14 @@
-package com.mixamus.autoparts.repository;
+package com.mixamus.autoparts.dao;
 
 import com.mixamus.autoparts.domain.Part;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
 
-import java.util.Set;
+import java.util.List;
 
 @Repository
-@EnableJpaRepositories
 public class PartsRepository {
 
-    public static Set<Object> lists = Set.of(
+    public static List<Part> parts = List.of(
             new Part(1, "Avtomagnitol", "VW4829489284298492", "Dodge", 1997),
             new Part(2, "Koleso", "GH4829484274888913", "Opel", 2002),
             new Part(3, "Krilo", "SS4878623451888913", "BMW", 2012),
@@ -20,4 +18,8 @@ public class PartsRepository {
             new Part(7, "Kardan", "MN4829484274888913", "Chevrolet", 1987),
             new Part(8, "Provodka", "CX4829484274888913", "Ford", 1876)
     );
+
+    public List<Part> getAllParts() {
+        return parts;
+    }
 }
