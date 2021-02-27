@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 @EqualsAndHashCode
 public class User {
 
-    String username;
+    String userName;
     String firstName;
     String lastName;
     String password;
