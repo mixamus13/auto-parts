@@ -2,9 +2,7 @@ package com.mixamus.autoparts.controllers;
 
 import com.mixamus.autoparts.dao.UsersRepository;
 import com.mixamus.autoparts.domain.User;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -15,8 +13,23 @@ public class UserController {
         this.usersRepository = usersRepository;
     }
 
-    @GetMapping("users/{userName}")
+    @GetMapping("user/{userName}")
     public User getUserByUserName(@PathVariable String userName) {
         return usersRepository.getByUserName(userName);
+    }
+
+    @PostMapping("user/")
+    public User createByUser() {
+        return usersRepository.createUser();
+    }
+
+    @PutMapping("user/{userName}")
+    public User updateUserByUserName(@PathVariable String userName) {
+        return usersRepository.updateUserByUserName(userName);
+    }
+
+    @DeleteMapping("user/{userName}")
+    public void deleteUserByUserName(@PathVariable String userName) {
+        usersRepository.deleteByUserName(userName);
     }
 }

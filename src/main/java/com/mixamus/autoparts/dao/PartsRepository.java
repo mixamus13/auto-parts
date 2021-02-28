@@ -1,6 +1,7 @@
 package com.mixamus.autoparts.dao;
 
 import com.mixamus.autoparts.domain.Part;
+import com.mixamus.autoparts.domain.Store;
 import org.springframework.stereotype.Repository;
 
 import java.util.Map;
@@ -19,8 +20,30 @@ public class PartsRepository {
             "8", new Part(8, "Provodka", "CX4829484274888913", "Ford", 1876)
     );
 
-    public Part getPartById(int id) {
-        return parts.get(id);
+    public Part getPartByNamePart(String namePart) {
+        return parts.get(namePart);
+    }
+
+    public Part createNewPart() {
+        Part newPart = new Part();
+        return newPart;
+    }
+
+    public Part updatePartNamePart(String namePart) {
+        return parts.putIfAbsent(namePart, parts.get(namePart));
+    }
+
+    public void deletePartById(String namePart) {
+        parts.remove(namePart);
+    }
+
+    public void uploadImage(String image) {
+
+    }
+
+    public boolean findPartByStatus(String namePart) {
+        Store status = new Store();
+        return status.isStatusOrder();
     }
 
 //    public static List<Part> parts = List.of(

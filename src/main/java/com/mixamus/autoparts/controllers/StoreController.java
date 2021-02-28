@@ -2,11 +2,7 @@ package com.mixamus.autoparts.controllers;
 
 import com.mixamus.autoparts.dao.StoreRepository;
 import com.mixamus.autoparts.domain.Store;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class StoreController {
@@ -17,8 +13,19 @@ public class StoreController {
         this.storeRepository = storeRepository;
     }
 
-    @GetMapping("order/{numberOrder}")
+    @GetMapping("store/order/{numberOrder}")
     public Store getByNumberOrder(@PathVariable String numberOrder) {
         return storeRepository.getByNumberOrder(numberOrder);
+    }
+
+    @PostMapping("/store/order")
+    public Store getNewOrder() {
+        Store newOrder = new Store();
+        return storeRepository.getNewOrder();
+    }
+
+    @DeleteMapping("store/order/{numberOrder}")
+    public void deleteByNumberOrder(@PathVariable String numberOrder) {
+        storeRepository.deleteByNumberOrder(numberOrder);
     }
 }

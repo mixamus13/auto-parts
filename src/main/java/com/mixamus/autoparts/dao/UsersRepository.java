@@ -47,4 +47,17 @@ public class UsersRepository {
     public User getByUserName(String userName) {
         return users.get(userName);
     }
+
+    public User createUser() {
+        User newUser = new User();
+        return newUser;
+    }
+
+    public User updateUserByUserName(String userName) {
+        return null;
+    }
+
+    public void deleteByUserName(String userName) {
+
+    }
 }

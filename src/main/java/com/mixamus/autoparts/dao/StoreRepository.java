@@ -23,6 +23,15 @@ public class StoreRepository {
         return orders.get(numberOrder);
     }
 
+    public void deleteByNumberOrder(String numberOrder) {
+        orders.remove(numberOrder);
+    }
+
+    public Store getNewOrder() {
+        Store newOrder = new Store();
+        return orders.put("10", newOrder);
+    }
+
 //    public static List<Store> orders = List.of(
 //            new Store("1234356", true),
 //            new Store("7785645", true),
