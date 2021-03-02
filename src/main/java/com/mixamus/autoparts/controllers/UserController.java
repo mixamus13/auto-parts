@@ -14,22 +14,22 @@ public class UserController {
     }
 
     @GetMapping("user/{userName}")
-    public User getUserByUserName(@PathVariable String userName) {
-        return usersRepository.getByUserName(userName);
+    public User getByUsername(@PathVariable String userName) {
+        return usersRepository.getByName(userName);
     }
 
     @PostMapping("user/")
     public User createByUser() {
-        return usersRepository.createUser();
+        return usersRepository.create();
     }
 
     @PutMapping("user/{userName}")
-    public User updateUserByUserName(@PathVariable String userName) {
-        return usersRepository.updateUserByUserName(userName);
+    public User updateUserByUserName(@PathVariable User userName) {
+        return usersRepository.update(userName);
     }
 
     @DeleteMapping("user/{userName}")
     public void deleteUserByUserName(@PathVariable String userName) {
-        usersRepository.deleteByUserName(userName);
+        usersRepository.delete(userName);
     }
 }

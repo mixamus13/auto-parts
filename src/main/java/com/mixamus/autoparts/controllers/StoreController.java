@@ -15,17 +15,17 @@ public class StoreController {
 
     @GetMapping("store/order/{numberOrder}")
     public Store getByNumberOrder(@PathVariable String numberOrder) {
-        return storeRepository.getByNumberOrder(numberOrder);
+        return storeRepository.getByName(numberOrder);
     }
 
     @PostMapping("/store/order")
     public Store getNewOrder() {
         Store newOrder = new Store();
-        return storeRepository.getNewOrder();
+        return storeRepository.create();
     }
 
     @DeleteMapping("store/order/{numberOrder}")
     public void deleteByNumberOrder(@PathVariable String numberOrder) {
-        storeRepository.deleteByNumberOrder(numberOrder);
+        storeRepository.delete(numberOrder);
     }
 }

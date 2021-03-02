@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Map;
 
 @Repository
-public class StoreRepository {
+public class StoreRepository implements RepositoryManipulation<Store> {
 
     private static Map<String, Store> orders = Map.of(
             "1", new Store("1234356", true),
@@ -19,28 +19,36 @@ public class StoreRepository {
             "8", new Store("9754424", false)
     );
 
-    public Store getByNumberOrder(String numberOrder) {
-        return orders.get(numberOrder);
-    }
+    private static Map<String, String> indexBuNumberOrder = Map.of(
+            "1234356", "1",
+            "7785645", "2",
+            "5235363", "3",
+            "3532453", "4",
+            "8566344", "5",
+            "9675634", "6",
+            "3679633", "7",
+            "9754424", "8"
+    );
 
-    public void deleteByNumberOrder(String numberOrder) {
-        orders.remove(numberOrder);
-    }
-
-    public Store getNewOrder() {
+    @Override
+    public Store create() {
         Store newOrder = new Store();
         return orders.put("10", newOrder);
     }
 
-//    public static List<Store> orders = List.of(
-//            new Store("1234356", true),
-//            new Store("7785645", true),
-//            new Store("5235363", false),
-//            new Store("3532453", true),
-//            new Store("8566344", true),
-//            new Store("9675634", false),
-//            new Store("3679633", true),
-//            new Store("9754424", false)
-//    );
+    @Override
+    public Store update(Store name) {
+        return null;
+    }
 
+    @Override
+    public Store getByName(String name) {
+        String key = indexBuNumberOrder.get(name);
+        return orders.get(key);
+    }
+
+    @Override
+    public void delete(String id) {
+        orders.remove(id);
+    }
 }

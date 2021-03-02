@@ -4,5 +4,8 @@ server:
 spring:
   security:
     user:
-      password: qwerty13
       name: mixamus
+      password: qwerty13
+
+  jpa:
+    open-in-view: false

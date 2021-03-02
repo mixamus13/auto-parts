@@ -2,7 +2,6 @@ package com.mixamus.autoparts.controllers;
 
 import com.mixamus.autoparts.dao.PartsRepository;
 import com.mixamus.autoparts.domain.Part;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,7 +15,7 @@ public class PartController {
 
     @GetMapping("part/{namePart}")
     public Part getPartByNamePart(@PathVariable String namePart) {
-        return partsRepository.getPartByNamePart(namePart);
+        return partsRepository.getByName(namePart);
     }
 
     @GetMapping("/part/find{namePart}")
@@ -26,8 +25,7 @@ public class PartController {
 
     @PostMapping("part/")
     public Part createNewPart() {
-        Part newPart = new Part();
-        return partsRepository.createNewPart();
+        return partsRepository.create();
     }
 
     @PostMapping("part/{namePart}/uploadImage")
@@ -36,12 +34,12 @@ public class PartController {
     }
 
     @PutMapping("part/{namePart}")
-    public Part updatePartNamePart(@PathVariable String namePart) {
-        return partsRepository.updatePartNamePart(namePart);
+    public Part updatePartNamePart(@PathVariable Part namePart) {
+        return partsRepository.update(namePart);
     }
 
     @DeleteMapping("part/{namePart}")
-    public void deletePartById(@PathVariable String namePart) {
-        partsRepository.deletePartById(namePart);
+    public void deletePart(@PathVariable String namePart) {
+        partsRepository.delete(namePart);
     }
 }
