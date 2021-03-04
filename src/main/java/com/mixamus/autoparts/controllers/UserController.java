@@ -2,25 +2,32 @@ package com.mixamus.autoparts.controllers;
 
 import com.mixamus.autoparts.dao.UsersRepository;
 import com.mixamus.autoparts.domain.User;
+import com.mixamus.autoparts.opencsv.CsvUsersRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class UserController {
 
     private final UsersRepository usersRepository;
+    private final CsvUsersRepository csvUsersRepository;
 
-    public UserController(UsersRepository usersRepository) {
+    @Autowired
+    public UserController(UsersRepository usersRepository, CsvUsersRepository csvUsersRepository) {
         this.usersRepository = usersRepository;
+        this.csvUsersRepository = csvUsersRepository;
     }
 
-    @GetMapping("user/{userName}")
-    public User getByUsername(@PathVariable String userName) {
-        return usersRepository.getByName(userName);
+    @GetMapping("user/{id}")
+    public List<String> getPartByIdCsv(@PathVariable int id) {
+        return csvUsersRepository.getPartCsvId(id);
     }
 
     @PostMapping("user/")
-    public User createByUser() {
-        return usersRepository.create();
+    public User createByUser(User user) {
+        return usersRepository.create(user);
     }
 
     @PutMapping("user/{userName}")

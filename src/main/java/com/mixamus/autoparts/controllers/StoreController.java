@@ -19,9 +19,9 @@ public class StoreController {
     }
 
     @PostMapping("/store/order")
-    public Store getNewOrder() {
+    public Store getNewOrder(Store store) {
         Store newOrder = new Store();
-        return storeRepository.create();
+        return storeRepository.create(store);
     }
 
     @DeleteMapping("store/order/{numberOrder}")

@@ -12,4 +12,5 @@ public class AutoPartsApplication {
         SpringApplication.run(AutoPartsApplication.class, args);
     }
 
+
 }

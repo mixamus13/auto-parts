@@ -9,14 +9,14 @@ import java.util.Map;
 public class UsersRepository implements RepositoryManipulation<User> {
 
     private static Map<String, User> users = Map.of(
-            "1", new User("Pered", "Bob", "Helsen", "er3hfwfh3fh", "9035556677"),
-            "2", new User("Hered", "Elen", "HelKilopolsen", "efcegrvefqc", "9294569812"),
-            "3", new User("Dase", "Nick", "Sedas", "uknytukbcaev", "9015326457"),
-            "4", new User("Poloi", "Brain", "Ikilopo", "vygcwetecce", "9011116634"),
-            "5", new User("Nikols", "Amanda", "Poloir", "cfegrtf464v", "921559913"),
-            "6", new User("Bered", "Vera", "Seretut", "kuktbryvhg45", "9995256644"),
-            "7", new User("Swere", "Melisa", "Mered", "dscsvd4564dfvd", "9235226699"),
-            "8", new User("Kolop", "Jim", "Sderew", "csdf456456fgv", "9114441177")
+            "1", new User(1, "Pered", "Bob", "Helsen", "er3hfwfh3fh", "9035556677"),
+            "2", new User(2, "Hered", "Elen", "HelKilopolsen", "efcegrvefqc", "9294569812"),
+            "3", new User(3, "Dase", "Nick", "Sedas", "uknytukbcaev", "9015326457"),
+            "4", new User(4, "Poloi", "Brain", "Ikilopo", "vygcwetecce", "9011116634"),
+            "5", new User(5, "Nikols", "Amanda", "Poloir", "cfegrtf464v", "921559913"),
+            "6", new User(6, "Bered", "Vera", "Seretut", "kuktbryvhg45", "9995256644"),
+            "7", new User(7, "Swere", "Melisa", "Mered", "dscsvd4564dfvd", "9235226699"),
+            "8", new User(8, "Kolop", "Jim", "Sderew", "csdf456456fgv", "9114441177")
     );
 
     private static Map<String, String> indexByUserName = Map.of(
@@ -31,7 +31,7 @@ public class UsersRepository implements RepositoryManipulation<User> {
     );
 
     @Override
-    public User create() {
+    public User create(User user) {
         return new User();
     }
 
@@ -44,6 +44,12 @@ public class UsersRepository implements RepositoryManipulation<User> {
     public User getByName(String name) {
         String key = indexByUserName.get(name);
         return users.get(key);
+    }
+
+    @Override
+    public User getById(String id) {
+        String index = indexByUserName.get(id);
+        return users.get(index);
     }
 
     @Override

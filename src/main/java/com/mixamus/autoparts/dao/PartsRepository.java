@@ -2,9 +2,10 @@ package com.mixamus.autoparts.dao;
 
 import com.mixamus.autoparts.domain.Part;
 import com.mixamus.autoparts.domain.Store;
+import com.mixamus.autoparts.opencsv.CsvPartsRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Map;
+import java.util.*;
 
 @Repository
 public class PartsRepository implements RepositoryManipulation<Part> {
@@ -20,26 +21,13 @@ public class PartsRepository implements RepositoryManipulation<Part> {
             "8", new Part(8, "Provodka", "CX4829484274888913", "Ford", 1876)
     );
 
-    private static Map<String, String> indexByNamePart = Map.of(
-            "Avtomagnitol", "1",
-            "Koleso", "2",
-            "Krilo", "3",
-            "Fara", "4",
-            "Kapot", "5",
-            "Sidenie", "6",
-            "Kardan", "7",
-            "Provodka", "8"
-    );
+    CsvPartsRepository csvPartsRepository;
 
     @Override
-    public Part create() {
-        Part newPart = new Part();
-        newPart.setId(newPart.getId());
-        newPart.setNamePart(newPart.getNamePart());
-        newPart.setVin(newPart.getVin());
-        newPart.setModel(newPart.getModel());
-        newPart.setYear(newPart.getYear());
-        return parts.put("11", newPart);
+    public Part create(Part entity) {
+        List<Part> list = new ArrayList();
+        list.add(entity);
+        return entity;
     }
 
     @Override
@@ -49,8 +37,12 @@ public class PartsRepository implements RepositoryManipulation<Part> {
 
     @Override
     public Part getByName(String name) {
-        String key = indexByNamePart.get(name);
-        return parts.get(key);
+        return parts.get(name);
+    }
+
+    @Override
+    public Part getById(String id) {
+        return parts.get(id);
     }
 
     @Override

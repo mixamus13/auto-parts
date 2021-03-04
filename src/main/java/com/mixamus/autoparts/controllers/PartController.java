@@ -2,20 +2,27 @@ package com.mixamus.autoparts.controllers;
 
 import com.mixamus.autoparts.dao.PartsRepository;
 import com.mixamus.autoparts.domain.Part;
+import com.mixamus.autoparts.opencsv.CsvPartsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class PartController {
 
     private final PartsRepository partsRepository;
+    private final CsvPartsRepository csvPartsRepository;
 
-    public PartController(PartsRepository partsRepository) {
+    @Autowired
+    public PartController(PartsRepository partsRepository, CsvPartsRepository csvPartsRepository) {
         this.partsRepository = partsRepository;
+        this.csvPartsRepository = csvPartsRepository;
     }
 
-    @GetMapping("part/{namePart}")
-    public Part getPartByNamePart(@PathVariable String namePart) {
-        return partsRepository.getByName(namePart);
+    @GetMapping("part/{id}")
+    public List<String> getPartByIdCsv(@PathVariable int id) {
+        return csvPartsRepository.getPartCsvId(id);
     }
 
     @GetMapping("/part/find{namePart}")
@@ -24,8 +31,8 @@ public class PartController {
     }
 
     @PostMapping("part/")
-    public Part createNewPart() {
-        return partsRepository.create();
+    public Part createNewPart(Part part) {
+        return partsRepository.create(part);
     }
 
     @PostMapping("part/{namePart}/uploadImage")

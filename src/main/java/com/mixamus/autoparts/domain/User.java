@@ -1,16 +1,15 @@
 package com.mixamus.autoparts.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
+@ToString
 public class User {
 
+    int id;
     String userName;
     String firstName;
     String lastName;
