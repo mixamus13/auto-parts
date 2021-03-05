@@ -20,6 +20,11 @@ public class PartController {
         this.csvPartsRepository = csvPartsRepository;
     }
 
+    /**
+     * Get part from id.
+     * @param id number of part.
+     * @return part with all data.
+     */
     @GetMapping("part/{id}")
     public List<String> getPartByIdCsv(@PathVariable int id) {
         return csvPartsRepository.getPartCsvId(id);
