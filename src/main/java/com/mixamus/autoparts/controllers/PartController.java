@@ -4,6 +4,7 @@ import com.mixamus.autoparts.domain.Part;
 import com.mixamus.autoparts.service.PartsService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class PartController {
 
     PartsService partsService;

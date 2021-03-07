@@ -1,14 +1,9 @@
 package com.mixamus.autoparts.service;
 
-import com.mixamus.autoparts.domain.Store;
-import com.mixamus.autoparts.exceptions.ExceptionRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
-
 @Service
-@AllArgsConstructor
 public class StoreService {
 
 

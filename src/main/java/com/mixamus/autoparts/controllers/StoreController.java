@@ -1,13 +1,9 @@
 package com.mixamus.autoparts.controllers;
 
-import com.mixamus.autoparts.service.StoreService;
-import com.mixamus.autoparts.domain.Store;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequiredArgsConstructor
 public class StoreController {
 
 

@@ -2,6 +2,11 @@ server:
   port: 8888
 
 spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5454/postgres
+    username: postgres
+    password: postgres
+
   security:
     user:
       name: mixamus
@@ -9,8 +14,4 @@ spring:
 
   jpa:
     open-in-view: false
-
-  datasource:
-    url: jdbc:postgresql://localhost:5454/postgres
-    username: postgres
-    password: postgres
+    show-sql: true # false стоит по умолчанию, с true будет в консоли гененировать sql запросы

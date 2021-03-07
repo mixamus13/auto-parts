@@ -3,21 +3,20 @@ package com.mixamus.autoparts.service;
 import com.mixamus.autoparts.dao.PartDao;
 import com.mixamus.autoparts.domain.Part;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.SneakyThrows;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@NoArgsConstructor
-@AllArgsConstructor
 public class PartsService {
 
     PartDao partDao;
+
+    public PartsService(PartDao partDao) {
+        this.partDao = partDao;
+    }
 
     public List<Part> getAllUsers() {
         return partDao.findAll();

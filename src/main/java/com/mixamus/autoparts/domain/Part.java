@@ -13,10 +13,11 @@ import javax.persistence.*;
 public class Part {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
 
-    String namePart;
+    @Column(name = "namepart")
+    String namepart;
 
     String vin;
 

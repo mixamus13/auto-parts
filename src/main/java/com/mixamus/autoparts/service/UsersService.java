@@ -1,14 +1,9 @@
 package com.mixamus.autoparts.service;
 
-import com.mixamus.autoparts.domain.User;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Repository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
-
 @Service
-@AllArgsConstructor
 public class UsersService {
 
 //    private static Map<String, User> users = Map.of(
