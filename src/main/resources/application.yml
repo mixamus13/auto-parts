@@ -9,3 +9,8 @@ spring:
 
   jpa:
     open-in-view: false
+
+  datasource:
+    url: jdbc:postgresql://localhost:5454/postgres
+    username: postgres
+    password: postgres

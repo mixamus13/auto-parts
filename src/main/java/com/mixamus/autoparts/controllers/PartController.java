@@ -1,57 +1,73 @@
 package com.mixamus.autoparts.controllers;
 
-import com.mixamus.autoparts.dao.PartsRepository;
 import com.mixamus.autoparts.domain.Part;
-import com.mixamus.autoparts.opencsv.CsvPartsRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import com.mixamus.autoparts.service.PartsService;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
+@RequiredArgsConstructor
 public class PartController {
 
-    private final PartsRepository partsRepository;
-    private final CsvPartsRepository csvPartsRepository;
+    PartsService partsService;
 
-    @Autowired
-    public PartController(PartsRepository partsRepository, CsvPartsRepository csvPartsRepository) {
-        this.partsRepository = partsRepository;
-        this.csvPartsRepository = csvPartsRepository;
+    @GetMapping("parts/")
+    public List<Part> getAllParts() {
+        return partsService.getAllUsers();
     }
 
-    /**
-     * Get part from id.
-     * @param id number of part.
-     * @return part with all data.
-     */
-    @GetMapping("part/{id}")
-    public List<String> getPartByIdCsv(@PathVariable int id) {
-        return csvPartsRepository.getPartCsvId(id);
+    @GetMapping("parts/{id}")
+    public Optional<Part> getAllPartById(@PathVariable Integer id) {
+        return partsService.getPartById(id);
     }
 
-    @GetMapping("/part/find{namePart}")
-    public boolean findPartByStatus(@PathVariable String namePart) {
-        return partsRepository.findPartByStatus(namePart);
-    }
-
-    @PostMapping("part/")
-    public Part createNewPart(Part part) {
-        return partsRepository.create(part);
-    }
-
-    @PostMapping("part/{namePart}/uploadImage")
-    public void uploadImage(@PathVariable String image) {
-        partsRepository.uploadImage(image);
-    }
-
-    @PutMapping("part/{namePart}")
-    public Part updatePartNamePart(@PathVariable Part namePart) {
-        return partsRepository.update(namePart);
-    }
-
-    @DeleteMapping("part/{namePart}")
-    public void deletePart(@PathVariable String namePart) {
-        partsRepository.delete(namePart);
-    }
+    //    private final PartsRepository partsRepository;
+//    private final CsvPartsRepository csvPartsRepository;
+//
+//    @Autowired
+//    public PartController(PartsRepository partsRepository, CsvPartsRepository csvPartsRepository) {
+//        this.partsRepository = partsRepository;
+//        this.csvPartsRepository = csvPartsRepository;
+//    }
+//
+//    /**
+//     * Get part from id.
+//     * @param id number of part.
+//     * @return part with all data.
+//     */
+//    @GetMapping("part/{id}")
+//    public List<String> getPartByIdCsv(@PathVariable int id) {
+//        return csvPartsRepository.getPartCsvId(id);
+//    }
+//
+//    @GetMapping("/part/find{namePart}")
+//    public boolean findPartByStatus(@PathVariable String namePart) {
+//        return partsRepository.findPartByStatus(namePart);
+//    }
+//
+//    @PostMapping("part/")
+//    public Part createNewPart(Part part) {
+//        return partsRepository.create(part);
+//    }
+//
+//    @PostMapping("part/{namePart}/uploadImage")
+//    public void uploadImage(@PathVariable String image) {
+//        partsRepository.uploadImage(image);
+//    }
+//
+//    @PutMapping("part/{namePart}")
+//    public Part updatePartNamePart(@PathVariable Part namePart) {
+//        return partsRepository.update(namePart);
+//    }
+//
+//    @DeleteMapping("part/{namePart}")
+//    public void deletePart(@PathVariable String namePart) {
+//        partsRepository.delete(namePart);
+//    }
 }

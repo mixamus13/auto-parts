@@ -2,9 +2,7 @@ package com.mixamus.autoparts.domain;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @RequiredArgsConstructor
@@ -16,9 +14,13 @@ public class Part {
 
     @Id
     @GeneratedValue
-    int id;
+    Integer id;
+
     String namePart;
+
     String vin;
+
     String model;
+
     int year;
 }
