@@ -108,7 +108,6 @@ public class WriteCsvInMap {
         writer.flush();
     }
 
-
     /**
      * @param reader
      * @throws IOException

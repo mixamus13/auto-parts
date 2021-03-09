@@ -3,6 +3,7 @@ package com.mixamus.autoparts.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Data
 @RequiredArgsConstructor
@@ -14,7 +15,7 @@ public class Store {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer id;
+    int id;
 
     String numberOrder;
 

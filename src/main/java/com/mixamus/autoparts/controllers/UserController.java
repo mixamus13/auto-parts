@@ -1,14 +1,7 @@
 package com.mixamus.autoparts.controllers;
 
-import com.mixamus.autoparts.service.UsersService;
-import com.mixamus.autoparts.domain.User;
-import com.mixamus.autoparts.opencsv.CsvUsersRepository;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor

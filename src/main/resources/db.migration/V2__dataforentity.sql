@@ -1,16 +1,16 @@
 -- PARTS:
-INSERT INTO part(id, namepart, vin, model, year)
-VALUES (1, 'Magnitola', 'JH4CL96878C525510', 'Ford', 1988);
-INSERT INTO part(id, namepart, vin, model, year)
-VALUES (2, 'Koleso', 'G6AE1RXXF0846207', 'Audi', 2011);
-INSERT INTO part(id, namepart, vin, model, year)
-VALUES (3, 'Fara', 'WVWAA7AJ2CW263741', 'Jaguar', 1967);
-INSERT INTO part(id, namepart, vin, model, year)
-VALUES (4, 'Motor', 'KNDMG4C71E6532505', 'Opel', 1999);
-INSERT INTO part(id, namepart, vin, model, year)
-VALUES (5, 'Torpedo', 'WBADW3C56CE437448', 'Bmw', 2013);
-INSERT INTO part(id, namepart, vin, model, year)
-VALUES (6, 'Zerkalo', 'YV1960ASXA1312354', 'Mercedes-Benz', 2019);
+INSERT INTO part(namepart, vin, model, year)
+VALUES ('Magnitola', 'JH4CL96878C525510', 'Ford', 1988);
+INSERT INTO part(namepart, vin, model, year)
+VALUES ('Koleso', 'G6AE1RXXF0846207', 'Audi', 2011);
+INSERT INTO part(namepart, vin, model, year)
+VALUES ('Fara', 'WVWAA7AJ2CW263741', 'Jaguar', 1967);
+INSERT INTO part(namepart, vin, model, year)
+VALUES ('Motor', 'KNDMG4C71E6532505', 'Opel', 1999);
+INSERT INTO part(namepart, vin, model, year)
+VALUES ('Torpedo', 'WBADW3C56CE437448', 'Bmw', 2013);
+INSERT INTO part(namepart, vin, model, year)
+VALUES ('Zerkalo', 'YV1960ASXA1312354', 'Mercedes-Benz', 2019);
 
 -- USERS:
 INSERT INTO users(id, username, firstname, lastname, password, phone)

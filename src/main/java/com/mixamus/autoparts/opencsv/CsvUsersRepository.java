@@ -13,6 +13,10 @@ import java.util.List;
 @Component
 public class CsvUsersRepository {
 
+    public static void main(String[] args) {
+        System.out.println("Part csv by Id = " + getPartCsvId(5));
+    }
+
     /**
      * Get user from csv file from id.
      * @param id number user in file.
@@ -20,7 +24,7 @@ public class CsvUsersRepository {
      */
 
     @SneakyThrows
-    public List<String> getPartCsvId(int id) {
+    public static List<String> getPartCsvId(int id) {
         List<List<String>> records = new ArrayList<>();
         BufferedReader br = new BufferedReader(new FileReader("MOCK_DATA_USERS.csv"));
         String line;
