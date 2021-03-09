@@ -16,6 +16,10 @@ public class CsvPartsRepository {
         getNeedCsvFile("5");
     }
 
+    /**
+     *
+     * @param id
+     */
     @SneakyThrows
     public static void getNeedCsvFile(String id) {
 
@@ -32,6 +36,12 @@ public class CsvPartsRepository {
         System.out.println(thirds.get());
     }
 
+    /**
+     *
+     * @param id Part.
+     * @param fileName file write.
+     * @return Part.
+     */
     @SneakyThrows
     public static List<Part> getPartCsvId(String id, String fileName) {
         List<Part> records = new ArrayList<>();
