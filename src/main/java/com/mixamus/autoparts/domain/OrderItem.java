@@ -13,19 +13,11 @@ import javax.persistence.Id;
 @EqualsAndHashCode
 @ToString
 @Entity
-public class User {
+public class OrderItem {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
 
-    String userName;
-
-    String firstName;
-
-    String lastName;
-
-    String password;
-
-    String phone;
+    int count;
 }

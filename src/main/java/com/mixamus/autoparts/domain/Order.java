@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.List;
 
 @Data
 @RequiredArgsConstructor
@@ -13,19 +14,15 @@ import javax.persistence.Id;
 @EqualsAndHashCode
 @ToString
 @Entity
-public class User {
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
 
-    String userName;
+    String numberOrder;
 
-    String firstName;
+    //List<OrderItem> orderItems;
 
-    String lastName;
-
-    String password;
-
-    String phone;
+    boolean statusOrder; // сдеалть Enum
 }

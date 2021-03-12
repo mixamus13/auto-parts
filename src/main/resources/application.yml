@@ -12,6 +12,9 @@ spring:
       name: mixamus
       password: qwerty13
 
+
   jpa:
     open-in-view: false
     show-sql: true # false стоит по умолчанию, с true будет в консоли гененировать sql запросы
+
+debug: false

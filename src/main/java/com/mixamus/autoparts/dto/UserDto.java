@@ -2,21 +2,20 @@ package com.mixamus.autoparts.dto;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-@Entity
-public class PartDto {
+public class UserDto {
 
-    String namepart;
+    String userName;
 
-    String vin;
+    String firstName;
 
-    String model;
+    String lastName;
 
-    int year;
+    String password;
+
+    String phone;
 }

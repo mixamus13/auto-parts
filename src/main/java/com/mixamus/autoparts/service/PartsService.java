@@ -10,7 +10,7 @@ import java.util.Optional;
 @Service
 public class PartsService {
 
-    PartDao partDao;
+    final PartDao partDao;
 
     public PartsService(PartDao partDao) {
         this.partDao = partDao;
@@ -36,9 +36,7 @@ public class PartsService {
         partDao.deleteById(id);
     }
 
-    public void uploadImage(String image) {
-
-    }
+    public void uploadImage(String image) { }
 
     public boolean findPartByStatus(String namePart) {
         return false;
