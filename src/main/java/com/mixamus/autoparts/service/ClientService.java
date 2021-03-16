@@ -1,10 +1,39 @@
 package com.mixamus.autoparts.service;
 
-import lombok.RequiredArgsConstructor;
+import com.mixamus.autoparts.dao.ClientDao;
+import com.mixamus.autoparts.domain.Client;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
-public class UsersService {
+@AllArgsConstructor
+public class ClientService {
+
+    final ClientDao clientDao;
+
+    public Optional<Client> getUserById(int id) {
+        return clientDao.findById(id);
+    }
+
+    public Client createByUser(Client user) {
+        return clientDao.save(user);
+    }
+
+    public void deleteUserById(int id) {
+        clientDao.deleteById(id);
+    }
+
+    public List<Client> getAllUsers() {
+        return clientDao.findAll();
+    }
+
+//    public void deleteByUsername(String userName) {
+//        userDao.delete(userName);
+//    }
+
 
 //    private static Map<String, User> users = Map.of(
 //            "1", new User(1, "Pered", "Bob", "Helsen", "er3hfwfh3fh", "9035556677"),

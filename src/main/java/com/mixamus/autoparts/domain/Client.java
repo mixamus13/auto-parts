@@ -1,9 +1,10 @@
 package com.mixamus.autoparts.domain;
 
 import lombok.*;
+import org.apache.ibatis.annotations.Many;
+import org.apache.ibatis.annotations.One;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @RequiredArgsConstructor
@@ -11,14 +12,19 @@ import java.util.List;
 @EqualsAndHashCode
 @ToString
 @Entity
-public class OrderItem {
+public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    int id;
 
-    @OneToMany
-    List<Part> parts;
+    String username;
 
-    int count;
+    String firstname;
+
+    String lastname;
+
+    String password;
+
+    String phone;
 }

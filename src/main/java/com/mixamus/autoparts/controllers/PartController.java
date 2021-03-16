@@ -7,6 +7,7 @@ import com.mixamus.autoparts.exceptions.PartNotFoundException;
 import com.mixamus.autoparts.service.PartsService;
 import lombok.AllArgsConstructor;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,27 +28,28 @@ public class PartController {
      */
     @GetMapping("parts/")
     public List<Part> getAllParts() {
-        return partsService.getAllUsers();
+        return partsService.getAllParts();
     }
 
-    /**
-     * Get part from id.
-     *
-     * @param id number of part.
-     * @return part with all data.
-     */
 //    @GetMapping("parts/{id}")
 //    public Optional<Part> getPartById(@PathVariable int id) {
 //        return partsService.getPartById(id);
 //    }
+
+    /**
+     Get part from id.
+     *
+     * @param id number of part.
+     * @return part with all data.
+     */
     @GetMapping("parts/{id}")
-    EntityModel<Part> one(@PathVariable int id) {
+    EntityModel<Part> getPartById(@PathVariable int id) {
 
         Part part = partsService.getPartById(id) //
                 .orElseThrow(() -> new PartNotFoundException(id));
 
         return EntityModel.of(part, //
-                linkTo(methodOn(PartController.class).one(id)).withSelfRel(),
+                linkTo(methodOn(PartController.class).getPartById(id)).withSelfRel(),
                 linkTo(methodOn(PartController.class).getAllParts()).withRel("parts"));
     }
 
@@ -57,6 +59,7 @@ public class PartController {
      * @param part part.
      * @return new part.
      */
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("parts/")
     public Part createPart(@RequestBody Part part) {
         return partsService.createPart(part);

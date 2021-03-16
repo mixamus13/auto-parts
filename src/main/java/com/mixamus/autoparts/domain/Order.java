@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.List;
 
 @Data
 @RequiredArgsConstructor
@@ -24,5 +23,5 @@ public class Order {
 
     //List<OrderItem> orderItems;
 
-    boolean statusOrder; // сдеалть Enum
+    boolean statusOrder; // сделать Enum
 }

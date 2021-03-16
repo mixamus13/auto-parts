@@ -2,21 +2,19 @@ package com.mixamus.autoparts.service;
 
 import com.mixamus.autoparts.dao.PartDao;
 import com.mixamus.autoparts.domain.Part;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class PartsService {
 
     final PartDao partDao;
 
-    public PartsService(PartDao partDao) {
-        this.partDao = partDao;
-    }
-
-    public List<Part> getAllUsers() {
+    public List<Part> getAllParts() {
         return partDao.findAll();
     }
 
@@ -28,8 +26,8 @@ public class PartsService {
         return partDao.save(part);
     }
 
-    public Part updatePartById(Part part) {
-        return partDao.save(part);
+    public void updatePartById(Part part) {
+        partDao.save(part);
     }
 
     public void deleteById(int id) {

@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class UserDto {
+public class ClientDto {
 
     String userName;
 
