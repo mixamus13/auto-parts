@@ -1,12 +1,42 @@
 package com.mixamus.autoparts.service;
 
+import com.mixamus.autoparts.dao.StoreDao;
+import com.mixamus.autoparts.domain.Store;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class StoreService {
 
+    final StoreDao storeDao;
+
+    public List<Store> getAllOrder() {
+        return storeDao.findAll();
+    }
+
+    public Optional<Store> getOrderById(int id) {
+        return storeDao.findById(id);
+    }
+
+    public Store getByNumberOrder(String numberOrder) {
+        return null;
+    }
+
+    public void getNewOrder(Store store) {
+        storeDao.save(store);
+    }
+
+    public void delete(int id) {
+        storeDao.deleteById(id);
+    }
+
+    public void deleteByName(String numberOrder) {
+
+    }
 
 
 //    private static Map<String, Store> orders = Map.of(

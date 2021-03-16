@@ -13,15 +13,15 @@ import javax.persistence.Id;
 @EqualsAndHashCode
 @ToString
 @Entity
-public class Order {
+public class Store {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
-    String numberOrder;
+    String numberorder;
 
     //List<OrderItem> orderItems;
 
-    boolean statusOrder; // сделать Enum
+    boolean statusorder; // сделать Enum
 }
