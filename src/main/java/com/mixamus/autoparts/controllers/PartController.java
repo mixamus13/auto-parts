@@ -26,7 +26,7 @@ public class PartController {
      *
      * @return all parts.
      */
-    @GetMapping("parts/")
+    @GetMapping("/parts/")
     public List<Part> getAllParts() {
         return partsService.getAllParts();
     }
@@ -42,7 +42,7 @@ public class PartController {
      * @param id number of part.
      * @return part with all data.
      */
-    @GetMapping("parts/{id}")
+    @GetMapping("/parts/{id}")
     EntityModel<Part> getPartById(@PathVariable int id) {
 
         Part part = partsService.getPartById(id) //
@@ -60,7 +60,7 @@ public class PartController {
      * @return new part.
      */
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("parts/")
+    @PostMapping("/parts/")
     public Part createPart(@RequestBody Part part) {
         return partsService.createPart(part);
     }
@@ -73,13 +73,13 @@ public class PartController {
      */
     @PutMapping("/v1/parts/{id}")
     public void updatePartById(@PathVariable int id, @RequestBody PartDtoV1 partDtoV1) {
-        Part part = new Part();
-        part.setId(id);
-        part.setNamepart(partDtoV1.getNamepart());
-        part.setVin(partDtoV1.getVin());
-        part.setModel("n/a");
-        part.setYear(partDtoV1.getYear());
-        partsService.updatePartById(part);
+        Part newPart = new Part();
+        newPart.setId(id);
+        newPart.setNamepart(partDtoV1.getNamepart());
+        newPart.setVin(partDtoV1.getVin());
+        newPart.setModel("n/a");
+        newPart.setYear(partDtoV1.getYear());
+        partsService.updatePartById(newPart);
     }
 
     /**
@@ -90,13 +90,13 @@ public class PartController {
      */
     @PutMapping("/v2/parts/{id}")
     public void updatePartById(@PathVariable int id, @RequestBody PartDtoV2 partDtoV2) {
-        Part part = new Part();
-        part.setId(id);
-        part.setNamepart(partDtoV2.getNamepart());
-        part.setVin(partDtoV2.getVin());
-        part.setModel(partDtoV2.getModel());
-        part.setYear(partDtoV2.getYear());
-        partsService.updatePartById(part);
+        Part newPart = new Part();
+        newPart.setId(id);
+        newPart.setNamepart(partDtoV2.getNamepart());
+        newPart.setVin(partDtoV2.getVin());
+        newPart.setModel(partDtoV2.getModel());
+        newPart.setYear(partDtoV2.getYear());
+        partsService.updatePartById(newPart);
     }
 
     /**
@@ -104,7 +104,7 @@ public class PartController {
      *
      * @param id when to need delete Entity.
      */
-    @DeleteMapping("parts/{id}")
+    @DeleteMapping("/parts/{id}")
     public void deletePartById(@PathVariable int id) {
         partsService.deleteById(id);
     }
@@ -125,7 +125,7 @@ public class PartController {
      *
      * @param namePart upload image.
      */
-    @PostMapping("parts/{namePart}/uploadImage")
+    @PostMapping("/parts/{namePart}/uploadImage")
     public void uploadImage(@PathVariable String namePart) {
         partsService.uploadImage(namePart);
     }

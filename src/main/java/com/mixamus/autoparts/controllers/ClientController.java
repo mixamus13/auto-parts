@@ -1,6 +1,7 @@
 package com.mixamus.autoparts.controllers;
 
 import com.mixamus.autoparts.domain.Client;
+import com.mixamus.autoparts.dto.ClientDto;
 import com.mixamus.autoparts.service.ClientService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -14,35 +15,48 @@ public class ClientController {
 
     final ClientService clientService;
 
-    @GetMapping("clients/")
-    public List<Client> allUsers() {
+    @GetMapping("/clients/")
+    public List<Client> allClients() {
         return clientService.getAllUsers();
     }
 
-    @GetMapping("clients/{id}")
-    public Optional<Client> getUserById(@PathVariable int id) {
-        return clientService.getUserById(id);
+    @GetMapping("/clients/{id}")
+    public Optional<Client> getClientById(@PathVariable int id) {
+        return clientService.getClientById(id);
     }
 
-    @PostMapping("clients/")
-    public Client createByUser(Client user) {
-        return clientService.createByUser(user);
+    @PostMapping("/clients/")
+    public Client createByClient(@RequestBody Client user) {
+        return clientService.createClient(user);
     }
 
-    @PutMapping("clients/{userName}")
-    public Client updateUserByUsername(@PathVariable Client userName) {
-        return null;
+    @PutMapping("/clients/{id}")
+    public void updateClientById(@PathVariable int id, @RequestBody ClientDto clientDto) {
+        Client newClient = new Client();
+        newClient.setId(id);
+        newClient.setUsername(clientDto.getUsername());
+        newClient.setFirstname(clientDto.getFirstname());
+        newClient.setLastname(clientDto.getLastname());
+        newClient.setPassword(clientDto.getPassword());
+        newClient.setPhone(clientDto.getPhone());
+        clientService.updateClientById(newClient);
+    }
+
+//    @PutMapping("/clients/{userName}")
+//    public Client updateClientByUsername(@PathVariable Client userName) {
+//        return null;
+//    }
+
+    @DeleteMapping("/clients/{id}")
+    public void deleteClientById(@PathVariable int id) {
+        clientService.deleteClientById(id);
     }
 
 //    @DeleteMapping("user/{userName}")
 //    public void deleteUserByUserName(@PathVariable String userName) {
 //        usersService.deleteByUsername(userName);
-//    }
 
-    @DeleteMapping("clients/{id}")
-    public void deleteUserById(@PathVariable int id) {
-        clientService.deleteUserById(id);
-    }
+//    }
 
 
 //    private final UsersService usersService;
