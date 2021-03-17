@@ -6,6 +6,7 @@ import com.mixamus.autoparts.dto.PartDtoV2;
 import com.mixamus.autoparts.exceptions.PartNotFoundException;
 import com.mixamus.autoparts.service.PartsService;
 import lombok.AllArgsConstructor;
+import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

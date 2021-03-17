@@ -1,6 +1,8 @@
+#Port
 server:
   port: 8888
 
+#DB
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5454/postgres
@@ -17,4 +19,30 @@ spring:
     open-in-view: false
     show-sql: true # false стоит по умолчанию, с true будет в консоли гененировать sql запросы
 
+#Debug
 debug: false
+
+#Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+
+  health:
+    db:
+      enabled: true
+    diskspace:
+      enabled:
+info:
+  app:
+    encoding: "UTF-8"
+    java:
+      source: "11"
+      target: "11"
