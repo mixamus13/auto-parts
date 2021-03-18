@@ -9,9 +9,9 @@ import lombok.*;
 @ToString
 public class PartDtoV1 {
 
-    String namepart;
+  String namepart;
 
-    String vin;
+  String vin;
 
-    int year;
+  int year;
 }

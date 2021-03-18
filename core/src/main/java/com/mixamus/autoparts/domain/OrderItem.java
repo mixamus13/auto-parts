@@ -13,12 +13,12 @@ import java.util.List;
 @Entity
 public class OrderItem {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  Long id;
 
-    @OneToMany
-    List<Part> parts;
+  @OneToMany
+  List<Part> parts;
 
-    int count;
+  int count;
 }

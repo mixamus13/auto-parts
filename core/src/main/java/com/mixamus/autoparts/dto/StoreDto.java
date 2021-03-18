@@ -9,7 +9,7 @@ import lombok.*;
 @ToString
 public class StoreDto {
 
-    String numberOrder;
+  String numberOrder;
 
-    boolean statusOrder;
+  boolean statusOrder;
 }

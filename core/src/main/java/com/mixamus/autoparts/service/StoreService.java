@@ -12,31 +12,31 @@ import java.util.Optional;
 @AllArgsConstructor
 public class StoreService {
 
-    final StoreDao storeDao;
+  final StoreDao storeDao;
 
-    public List<Store> getAllOrder() {
-        return storeDao.findAll();
-    }
+  public List<Store> getAllOrder() {
+    return storeDao.findAll();
+  }
 
-    public Optional<Store> getOrderById(int id) {
-        return storeDao.findById(id);
-    }
+  public Optional<Store> getOrderById(int id) {
+    return storeDao.findById(id);
+  }
 
-    public Store getByNumberOrder(String numberOrder) {
-        return null;
-    }
+  public Store getByNumberOrder(String numberOrder) {
+    return null;
+  }
 
-    public void getNewOrder(Store store) {
-        storeDao.save(store);
-    }
+  public void getNewOrder(Store store) {
+    storeDao.save(store);
+  }
 
-    public void delete(int id) {
-        storeDao.deleteById(id);
-    }
+  public void delete(int id) {
+    storeDao.deleteById(id);
+  }
 
-    public void deleteByName(String numberOrder) {
+  public void deleteByName(String numberOrder) {
 
-    }
+  }
 
 
 //    private static Map<String, Store> orders = Map.of(

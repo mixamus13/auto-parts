@@ -1,10 +1,11 @@
 package com.mixamus.autoparts.domain;
 
 import lombok.*;
-import org.apache.ibatis.annotations.Many;
-import org.apache.ibatis.annotations.One;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Data
 @RequiredArgsConstructor
@@ -14,17 +15,17 @@ import javax.persistence.*;
 @Entity
 public class Client {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  int id;
 
-    String username;
+  String username;
 
-    String firstname;
+  String firstname;
 
-    String lastname;
+  String lastname;
 
-    String password;
+  String password;
 
-    String phone;
+  String phone;
 }

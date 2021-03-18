@@ -12,37 +12,37 @@ import java.util.Optional;
 @AllArgsConstructor
 public class StoreController {
 
-    final StoreService storeService;
+  final StoreService storeService;
 
-    @GetMapping("/order/")
-    public List<Store> getAllOrder() {
-        return storeService.getAllOrder();
-    }
+  @GetMapping("/order/")
+  public List<Store> getAllOrder() {
+    return storeService.getAllOrder();
+  }
 
-    @GetMapping("/order/{id}")
-    public Optional<Store> getOrderById(@PathVariable int id) {
-        return storeService.getOrderById(id);
-    }
+  @GetMapping("/order/{id}")
+  public Optional<Store> getOrderById(@PathVariable int id) {
+    return storeService.getOrderById(id);
+  }
 
-    @PostMapping("/order/")
-    public void getNewOrder(@RequestBody Store store) {
-        storeService.getNewOrder(store);
-    }
+  @PostMapping("/order/")
+  public void getNewOrder(@RequestBody Store store) {
+    storeService.getNewOrder(store);
+  }
 
-    @PutMapping("/order/{id}")
-    public void updateOrder(@PathVariable int id,
-                            @RequestBody Store store) {
-        Store newStore = new Store();
-        newStore.setId(id);
-        newStore.setNumberorder(store.getNumberorder());
-        newStore.setStatusorder(store.isStatusorder());
-        storeService.getNewOrder(newStore);
-    }
+  @PutMapping("/order/{id}")
+  public void updateOrder(@PathVariable int id,
+                          @RequestBody Store store) {
+    Store newStore = new Store();
+    newStore.setId(id);
+    newStore.setNumberorder(store.getNumberorder());
+    newStore.setStatusorder(store.isStatusorder());
+    storeService.getNewOrder(newStore);
+  }
 
-    @DeleteMapping("/order/{id}")
-    public void deleteByNumberOrder(@PathVariable int id) {
-        storeService.delete(id);
-    }
+  @DeleteMapping("/order/{id}")
+  public void deleteByNumberOrder(@PathVariable int id) {
+    storeService.delete(id);
+  }
 
 //    @DeleteMapping("/order/{numberOrder}")
 //    public void deleteByNumberOrder(@PathVariable String numberOrder) {
