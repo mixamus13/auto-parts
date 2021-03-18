@@ -3,20 +3,33 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.3</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-parent</artifactId>
+        <version>2020.0.0</version>
     </parent>
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>core</module>
+    </modules>
+
     <groupId>com.mixamus</groupId>
     <artifactId>auto-parts</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>auto-parts</name>
-    <description>Auto Parts project for Spring Boot</description>
+    <version>${revision}</version>
+
     <properties>
+        <!--region Bills of material (BOM)-->
+        <spring-cloud.version>2020.0.0</spring-cloud.version>
+        <!--endregion-->
+
+        <!--region General-->
         <java.version>11</java.version>
-        <spring-cloud.version>2020.0.1</spring-cloud.version>
+        <revision>0.0.1-SNAPSHOT</revision>
+        <minimal.maven.version>3.6.1</minimal.maven.version>
+        <!--endregion-->
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -177,6 +190,7 @@
             <artifactId>spring-boot-starter-hateoas</artifactId>
         </dependency>
     </dependencies>
+
     <dependencyManagement>
         <dependencies>
             <dependency>

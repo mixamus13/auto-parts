@@ -13,7 +13,7 @@ import java.util.function.Supplier;
 public class CsvPartsRepository {
 
     public static void main(String[] args) {
-        getNeedCsvFile("5");
+        getNeedCsvFile("2");
     }
 
     /**

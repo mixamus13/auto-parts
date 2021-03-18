@@ -39,15 +39,16 @@ public class StoreController {
         storeService.getNewOrder(newStore);
     }
 
-//    @DeleteMapping("/order/{numberOrder}")
-//    public void deleteByNumberOrder(@PathVariable String numberOrder) {
-//        storeService.deleteByName(numberOrder);
-//    }
-
     @DeleteMapping("/order/{id}")
     public void deleteByNumberOrder(@PathVariable int id) {
         storeService.delete(id);
     }
+
+//    @DeleteMapping("/order/{numberOrder}")
+//    public void deleteByNumberOrder(@PathVariable String numberOrder) {
+//        storeService.deleteByName(numberOrder);
+
+//    }
 
 
 //    StoreService storeService;
