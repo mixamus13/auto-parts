@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS OrderItem;
+
+CREATE TABLE OrderItem
+(
+    id       int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    count     INTEGER
+);

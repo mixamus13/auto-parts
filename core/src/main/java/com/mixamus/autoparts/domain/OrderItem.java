@@ -15,10 +15,10 @@ public class OrderItem {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  Long id;
+  int id;
 
-  @OneToMany
-  List<Part> parts;
+//  @OneToMany(mappedBy = "part")
+//  List<Part> parts;
 
   int count;
 }

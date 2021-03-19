@@ -205,6 +205,10 @@
   </dependencyManagement>
 
   <build>
+
+    <!--<defaultGoal>spring-boot:run</defaultGoal>-->
+    <defaultGoal>verify</defaultGoal>
+
     <plugins>
       <plugin>
         <groupId>org.jacoco</groupId>
