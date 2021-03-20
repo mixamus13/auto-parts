@@ -32,14 +32,7 @@ public class ClientController {
 
     @PutMapping("/clients/{id}")
     public void updateClientById(@PathVariable int id, @RequestBody ClientDto clientDto) {
-        Client newClient = new Client();
-        newClient.setId(id);
-        newClient.setUsername(clientDto.getUsername());
-        newClient.setFirstname(clientDto.getFirstname());
-        newClient.setLastname(clientDto.getLastname());
-        newClient.setPassword(clientDto.getPassword());
-        newClient.setPhone(clientDto.getPhone());
-        clientService.updateClientById(newClient);
+      clientService.updateClientId(id, clientDto);
     }
 
 //    @PutMapping("/clients/{userName}")

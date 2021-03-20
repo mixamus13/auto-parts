@@ -2,8 +2,12 @@ package com.mixamus.autoparts.service;
 
 import com.mixamus.autoparts.dao.PartDao;
 import com.mixamus.autoparts.domain.Part;
+import com.mixamus.autoparts.dto.PartDtoV1;
+import com.mixamus.autoparts.dto.PartDtoV2;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +17,7 @@ import java.util.Optional;
 public class PartsService {
 
   final PartDao partDao;
+  final PartsService partsService;
 
   public List<Part> getAllParts() {
     return partDao.findAll();
@@ -39,6 +44,26 @@ public class PartsService {
 
   public boolean findPartByStatus(String namePart) {
     return false;
+  }
+
+  public void updatePartIdV1(int id, PartDtoV1 partDtoV1) {
+    Part newPart = new Part();
+    newPart.setId(id);
+    newPart.setNamepart(partDtoV1.getNamepart());
+    newPart.setVin(partDtoV1.getVin());
+    newPart.setModel("n/a");
+    newPart.setYear(partDtoV1.getYear());
+    partsService.updatePartById(newPart);
+  }
+
+  public void updatepartIdV2(int id, PartDtoV2 partDtoV2) {
+    Part newPart = new Part();
+    newPart.setId(id);
+    newPart.setNamepart(partDtoV2.getNamepart());
+    newPart.setVin(partDtoV2.getVin());
+    newPart.setModel(partDtoV2.getModel());
+    newPart.setYear(partDtoV2.getYear());
+    partsService.updatePartById(newPart);
   }
 
 

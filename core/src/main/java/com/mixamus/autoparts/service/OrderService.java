@@ -13,6 +13,7 @@ import java.util.Optional;
 public class OrderService {
 
   final OrderDao orderDao;
+  final OrderService orderService;
 
   public List<Order> getAllOrder() {
     return orderDao.findAll();
@@ -36,6 +37,14 @@ public class OrderService {
 
   public void deleteByName(String numberOrder) {
 
+  }
+
+  public void updateOrderId(int id, Order order) {
+    Order newOrder = new Order();
+    newOrder.setId(id);
+    newOrder.setNumberorder(order.getNumberorder());
+    newOrder.setStatusorder(order.isStatusorder());
+    orderService.getNewOrder(newOrder);
   }
 
 
