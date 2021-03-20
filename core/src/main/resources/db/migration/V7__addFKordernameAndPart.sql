@@ -6,8 +6,6 @@ create table part
         constraint part_pkey
             primary key
         constraint part_id_fkey
-            references ordername
-        constraint part_id_fkey1
             references ordername,
     namepart     varchar(30) not null,
     vin          varchar(40) not null,
@@ -32,6 +30,6 @@ VALUES ('Zerkalo', 'YV1960ASXA1312354', 'Mercedes-Benz', 2019, true);
 INSERT INTO part(namepart, vin, model, year, availability)
 VALUES ('Kapot', 'YV1960ASXA1322222', 'Saab', 1977, false);
 
--- alter table part
---     owner to postgres;
---
+alter table part
+    owner to postgres;
+
