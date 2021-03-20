@@ -1,7 +1,7 @@
 package com.mixamus.autoparts.service;
 
-import com.mixamus.autoparts.dao.StoreDao;
-import com.mixamus.autoparts.domain.Store;
+import com.mixamus.autoparts.dao.OrderDao;
+import com.mixamus.autoparts.domain.Order;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,28 +10,28 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class StoreService {
+public class OrderService {
 
-  final StoreDao storeDao;
+  final OrderDao orderDao;
 
-  public List<Store> getAllOrder() {
-    return storeDao.findAll();
+  public List<Order> getAllOrder() {
+    return orderDao.findAll();
   }
 
-  public Optional<Store> getOrderById(int id) {
-    return storeDao.findById(id);
+  public Optional<Order> getOrderById(Integer id) {
+    return orderDao.findById(id);
   }
 
-  public Store getByNumberOrder(String numberOrder) {
+  public Order getByNumberOrder(String numberOrder) {
     return null;
   }
 
-  public void getNewOrder(Store store) {
-    storeDao.save(store);
+  public void getNewOrder(Order order) {
+    orderDao.save(order);
   }
 
   public void delete(int id) {
-    storeDao.deleteById(id);
+    orderDao.deleteById(id);
   }
 
   public void deleteByName(String numberOrder) {

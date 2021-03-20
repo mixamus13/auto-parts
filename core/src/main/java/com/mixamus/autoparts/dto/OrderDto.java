@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class StoreDto {
+public class OrderDto {
 
   String numberOrder;
 

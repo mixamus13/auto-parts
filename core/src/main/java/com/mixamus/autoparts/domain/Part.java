@@ -3,6 +3,7 @@ package com.mixamus.autoparts.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @RequiredArgsConstructor

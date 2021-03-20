@@ -1,7 +1,7 @@
 package com.mixamus.autoparts.controllers;
 
-import com.mixamus.autoparts.domain.Store;
-import com.mixamus.autoparts.service.StoreService;
+import com.mixamus.autoparts.domain.Order;
+import com.mixamus.autoparts.service.OrderService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,38 +10,38 @@ import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
-public class StoreController {
+public class OrderController {
 
-  final StoreService storeService;
+  final OrderService orderService;
 
-  @GetMapping("/order/")
-  public List<Store> getAllOrder() {
-    return storeService.getAllOrder();
+  @GetMapping("/orders/")
+  public List<Order> getAllOrder() {
+    return orderService.getAllOrder();
   }
 
-  @GetMapping("/order/{id}")
-  public Optional<Store> getOrderById(@PathVariable int id) {
-    return storeService.getOrderById(id);
+  @GetMapping("/orders/{id}")
+  public Optional<Order> getOrderById(@PathVariable int id) {
+    return orderService.getOrderById(id);
   }
 
-  @PostMapping("/order/")
-  public void getNewOrder(@RequestBody Store store) {
-    storeService.getNewOrder(store);
+  @PostMapping("/orders/")
+  public void getNewOrder(@RequestBody Order order) {
+    orderService.getNewOrder(order);
   }
 
-  @PutMapping("/order/{id}")
+  @PutMapping("/orders/{id}")
   public void updateOrder(@PathVariable int id,
-                          @RequestBody Store store) {
-    Store newStore = new Store();
-    newStore.setId(id);
-    newStore.setNumberorder(store.getNumberorder());
-    newStore.setStatusorder(store.isStatusorder());
-    storeService.getNewOrder(newStore);
+                          @RequestBody Order order) {
+    Order newOrder = new Order();
+    newOrder.setId(id);
+    newOrder.setNumberorder(order.getNumberorder());
+    newOrder.setStatusorder(order.isStatusorder());
+    orderService.getNewOrder(newOrder);
   }
 
-  @DeleteMapping("/order/{id}")
+  @DeleteMapping("/orders/{id}")
   public void deleteByNumberOrder(@PathVariable int id) {
-    storeService.delete(id);
+    orderService.delete(id);
   }
 
 //    @DeleteMapping("/order/{numberOrder}")

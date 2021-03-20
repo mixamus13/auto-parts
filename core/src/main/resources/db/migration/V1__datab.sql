@@ -61,17 +61,17 @@ INSERT INTO client(username, firstname, lastname, password, phone)
 VALUES ('ilinner6', 'Inesita', 'Linner', 'vBbl5JOgW', 1614234106);
 
 -- ORDER:
-INSERT INTO public.store (numberorder, statusorder)
+INSERT INTO public.order (numberorder, statusorder)
 VALUES ('32453325237', true);
-INSERT INTO public.store (numberorder, statusorder)
+INSERT INTO public.order (numberorder, statusorder)
 VALUES ('35456564565', false);
-INSERT INTO public.store (numberorder, statusorder)
+INSERT INTO public.order (numberorder, statusorder)
 VALUES ('76469654546', true);
-INSERT INTO public.store (numberorder, statusorder)
+INSERT INTO public.order (numberorder, statusorder)
 VALUES ('96756546424', true);
-INSERT INTO public.store (numberorder, statusorder)
+INSERT INTO public.order (numberorder, statusorder)
 VALUES ('11134466775', true);
-INSERT INTO public.store (numberorder, statusorder)
+INSERT INTO public.order (numberorder, statusorder)
 VALUES ('21215668655', false);
-INSERT INTO public.store (numberorder, statusorder)
+INSERT INTO public.order (numberorder, statusorder)
 VALUES ('11111367888', true);
