@@ -73,7 +73,13 @@ public class PartController {
    */
   @PutMapping("/v1/parts/{id}")
   public void updatePartById(@PathVariable int id, @RequestBody PartDtoV1 partDtoV1) {
-    partsService.updatePartIdV1(id, partDtoV1);
+    Part newPart = new Part();
+    newPart.setId(id);
+    newPart.setNamepart(partDtoV1.getNamepart());
+    newPart.setVin(partDtoV1.getVin());
+    newPart.setModel("n/a");
+    newPart.setYear(partDtoV1.getYear());
+    partsService.updatePartById(newPart);
   }
 
   /**
@@ -84,7 +90,13 @@ public class PartController {
    */
   @PutMapping("/v2/parts/{id}")
   public void updatePartById(@PathVariable int id, @RequestBody PartDtoV2 partDtoV2) {
-    partsService.updatepartIdV2(id, partDtoV2);
+    Part newPart = new Part();
+    newPart.setId(id);
+    newPart.setNamepart(partDtoV2.getNamepart());
+    newPart.setVin(partDtoV2.getVin());
+    newPart.setModel(partDtoV2.getModel());
+    newPart.setYear(partDtoV2.getYear());
+    partsService.updatePartById(newPart);
   }
 
   /**

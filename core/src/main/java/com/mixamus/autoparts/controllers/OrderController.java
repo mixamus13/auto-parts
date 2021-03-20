@@ -32,7 +32,11 @@ public class OrderController {
   @PutMapping("/orders/{id}")
   public void updateOrder(@PathVariable int id,
                           @RequestBody Order order) {
-    orderService.updateOrderId(id, order);
+    Order newOrder = new Order();
+    newOrder.setId(id);
+    newOrder.setNumberorder(order.getNumberorder());
+    newOrder.setStatusorder(order.isStatusorder());
+    orderService.getNewOrder(newOrder);
   }
 
   @DeleteMapping("/orders/{id}")
