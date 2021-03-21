@@ -2,8 +2,10 @@ package com.mixamus.autoparts.domain;
 
 import lombok.*;
 
-import javax.persistence.*;
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Data
 @RequiredArgsConstructor
@@ -13,17 +15,17 @@ import java.util.Set;
 @Entity
 public class Part {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
 
-  String namepart;
+    String namepart;
 
-  String vin;
+    String vin;
 
-  String model;
+    String model;
 
-  int year;
+    int year;
 
-  boolean availability;
+    boolean availability;
 }

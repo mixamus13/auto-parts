@@ -12,37 +12,37 @@ import java.util.Optional;
 @AllArgsConstructor
 public class OrderController {
 
-  final OrderService orderService;
+    final OrderService orderService;
 
-  @GetMapping("/orders/")
-  public List<Order> getAllOrder() {
-    return orderService.getAllOrder();
-  }
+    @GetMapping("/orders/")
+    public List<Order> getAllOrder() {
+        return orderService.getAllOrder();
+    }
 
-  @GetMapping("/orders/{id}")
-  public Optional<Order> getOrderById(@PathVariable int id) {
-    return orderService.getOrderById(id);
-  }
+    @GetMapping("/orders/{id}")
+    public Optional<Order> getOrderById(@PathVariable int id) {
+        return orderService.getOrderById(id);
+    }
 
-  @PostMapping("/orders/")
-  public void getNewOrder(@RequestBody Order order) {
-    orderService.getNewOrder(order);
-  }
+    @PostMapping("/orders/")
+    public void getNewOrder(@RequestBody Order order) {
+        orderService.getNewOrder(order);
+    }
 
-  @PutMapping("/orders/{id}")
-  public void updateOrder(@PathVariable int id,
-                          @RequestBody Order order) {
-    Order newOrder = new Order();
-    newOrder.setId(id);
-    newOrder.setNumberorder(order.getNumberorder());
-    newOrder.setStatusorder(order.isStatusorder());
-    orderService.getNewOrder(newOrder);
-  }
+    @PutMapping("/orders/{id}")
+    public void updateOrder(@PathVariable int id,
+                            @RequestBody Order order) {
+        Order newOrder = new Order();
+        newOrder.setId(id);
+        newOrder.setNumberorder(order.getNumberorder());
+        newOrder.setStatusorder(order.isStatusorder());
+        orderService.getNewOrder(newOrder);
+    }
 
-  @DeleteMapping("/orders/{id}")
-  public void deleteByNumberOrder(@PathVariable int id) {
-    orderService.delete(id);
-  }
+    @DeleteMapping("/orders/{id}")
+    public void deleteByNumberOrder(@PathVariable int id) {
+        orderService.delete(id);
+    }
 
 //    @DeleteMapping("/order/{numberOrder}")
 //    public void deleteByNumberOrder(@PathVariable String numberOrder) {

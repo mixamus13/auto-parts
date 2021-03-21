@@ -42,10 +42,10 @@ public class ClientController {
         clientService.updateClientById(newClient);
     }
 
-//    @PutMapping("/clients/{userName}")
-//    public Client updateClientByUsername(@PathVariable Client userName) {
-//        return null;
-//    }
+    @GetMapping("/clients/{userName}")
+    public Client updateClientByUsername(@PathVariable String userName) {
+        return clientService.findClientByFirstname(userName);
+    }
 
     @DeleteMapping("/clients/{id}")
     public void deleteClientById(@PathVariable int id) {

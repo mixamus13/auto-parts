@@ -2,6 +2,7 @@ package com.mixamus.autoparts.controllers;
 
 import com.mixamus.autoparts.domain.Part;
 import com.mixamus.autoparts.service.CheckOrderNumberService;
+import com.mixamus.autoparts.service.PartsService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,18 +15,25 @@ import java.util.List;
 @AllArgsConstructor
 public class CheckOrderNumber {
 
-  CheckOrderNumberService checkOrderNumberService;
+    final PartsService partsService;
 
-  @Autowired
-  public void setCheckOrderNumberService(CheckOrderNumberService checkOrderNumberService) {
-    this.checkOrderNumberService = checkOrderNumberService;
-  }
+    CheckOrderNumberService checkOrderNumberService;
 
-  @GetMapping("/ordernumber/")
-  public List<Part> getMissingPart(@RequestParam Integer orderId) {
+    @Autowired
+    public void setCheckOrderNumberService(CheckOrderNumberService checkOrderNumberService) {
+        this.checkOrderNumberService = checkOrderNumberService;
+    }
 
-    return checkOrderNumberService.getPartsIsPresent();
-  }
+    @GetMapping("/ordernumber/")
+    public List<Part> getOrderByIdAvailablePart(@RequestParam Integer orderId) {
+
+        return checkOrderNumberService.getOrderIdAvailable(orderId);
+    }
+
+    @GetMapping("/orderavailable/")
+    public List<Part> getAllPartsAvailable() {
+        return checkOrderNumberService.getPartsAvailable();
+    }
 }
 
 /**

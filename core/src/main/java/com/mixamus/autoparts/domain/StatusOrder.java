@@ -1,5 +1,5 @@
 package com.mixamus.autoparts.domain;
 
 public enum StatusOrder {
-  READY, NOT_READY
+    READY, NOT_READY
 }

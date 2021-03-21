@@ -12,27 +12,31 @@ import java.util.Optional;
 @AllArgsConstructor
 public class ClientService {
 
-  final ClientDao clientDao;
+    final ClientDao clientDao;
 
-  public List<Client> getAllUsers() {
-    return clientDao.findAll();
-  }
+    public List<Client> getAllUsers() {
+        return clientDao.findAll();
+    }
 
-  public Optional<Client> getClientById(int id) {
-    return clientDao.findById(id);
-  }
+    public Optional<Client> getClientById(int id) {
+        return clientDao.findById(id);
+    }
 
-  public Client createClient(Client client) {
-    return clientDao.save(client);
-  }
+    public Client createClient(Client client) {
+        return clientDao.save(client);
+    }
 
-  public void deleteClientById(int id) {
-    clientDao.deleteById(id);
-  }
+    public void deleteClientById(int id) {
+        clientDao.deleteById(id);
+    }
 
-  public void updateClientById(Client userName) {
-    clientDao.save(userName);
-  }
+    public void updateClientById(Client userName) {
+        clientDao.save(userName);
+    }
+
+    public Client findClientByFirstname(String userName) {
+        return clientDao.findClientByFirstname(userName);
+    }
 
 //    public void deleteByUsername(String userName) {
 //        userDao.delete(userName);

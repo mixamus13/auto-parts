@@ -15,17 +15,17 @@ import javax.persistence.Id;
 @Entity
 public class Client {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
 
-  String username;
+    String username;
 
-  String firstname;
+    String firstname;
 
-  String lastname;
+    String lastname;
 
-  String password;
+    String password;
 
-  String phone;
+    String phone;
 }

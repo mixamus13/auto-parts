@@ -12,34 +12,34 @@ import java.util.Optional;
 @AllArgsConstructor
 public class PartsService {
 
-  final PartDao partDao;
+    final PartDao partDao;
 
-  public List<Part> getAllParts() {
-    return partDao.findAll();
-  }
+    public List<Part> getAllParts() {
+        return partDao.findAll();
+    }
 
-  public Optional<Part> getPartById(int id) {
-    return partDao.findById(id);
-  }
+    public Optional<Part> getPartById(int id) {
+        return partDao.findById(id);
+    }
 
-  public Part createPart(Part part) {
-    return partDao.save(part);
-  }
+    public Part createPart(Part part) {
+        return partDao.save(part);
+    }
 
-  public void updatePartById(Part part) {
-    partDao.save(part);
-  }
+    public void updatePartById(Part part) {
+        partDao.save(part);
+    }
 
-  public void deleteById(int id) {
-    partDao.deleteById(id);
-  }
+    public void deleteById(int id) {
+        partDao.deleteById(id);
+    }
 
-  public void uploadImage(String image) {
-  }
+    public void uploadImage(String image) {
+    }
 
-  public boolean findPartByStatus(String namePart) {
-    return false;
-  }
+    public boolean findPartByStatus(String namePart) {
+        return false;
+    }
 
 //    private static Map<String, Part> parts = Map.of(
 //            "1", new Part(1, "Avtomagnitol", "VW4829489284298492", "Dodge", 1997),

@@ -15,15 +15,15 @@ import java.util.List;
 @Table(name = "ordername")
 public class Order {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
 
-  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-  @JsonIgnore
-  private List<Part> part;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<Part> part;
 
-  String numberorder;
+    String numberorder;
 
-  boolean statusorder; // сделать Enum
+    boolean statusorder; // сделать Enum
 }

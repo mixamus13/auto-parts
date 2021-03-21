@@ -2,8 +2,11 @@ package com.mixamus.autoparts.dao;
 
 import com.mixamus.autoparts.domain.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-public interface ClientDao extends JpaRepository<Client, Integer> {
+public interface ClientDao extends JpaRepository<Client, Integer>, JpaSpecificationExecutor<Client> {
 
-  //void delete(String userName);
+    //void delete(String userName);
+
+    Client findClientByFirstname(String firstname);
 }

@@ -2,8 +2,10 @@ package com.mixamus.autoparts.domain;
 
 import lombok.*;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Data
 @RequiredArgsConstructor
@@ -13,12 +15,12 @@ import java.util.List;
 @Entity
 public class OrderItem {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
 
 //  @OneToMany(mappedBy = "part")
 //  List<Part> parts;
 
-  int count;
+    int count;
 }

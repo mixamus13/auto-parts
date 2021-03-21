@@ -12,39 +12,39 @@ import java.util.Optional;
 @AllArgsConstructor
 public class OrderService {
 
-  final OrderDao orderDao;
+    final OrderDao orderDao;
 
-  public List<Order> getAllOrder() {
-    return orderDao.findAll();
-  }
+    public List<Order> getAllOrder() {
+        return orderDao.findAll();
+    }
 
-  public Optional<Order> getOrderById(Integer id) {
-    return orderDao.findById(id);
-  }
+    public Optional<Order> getOrderById(Integer id) {
+        return orderDao.findById(id);
+    }
 
-  public Order getByNumberOrder(String numberOrder) {
-    return null;
-  }
+    public Order getByNumberOrder(String numberOrder) {
+        return null;
+    }
 
-  public void getNewOrder(Order order) {
-    orderDao.save(order);
-  }
+    public void getNewOrder(Order order) {
+        orderDao.save(order);
+    }
 
-  public void delete(int id) {
-    orderDao.deleteById(id);
-  }
+    public void delete(int id) {
+        orderDao.deleteById(id);
+    }
 
-  public void deleteByName(String numberOrder) {
+    public void deleteByName(String numberOrder) {
 
-  }
+    }
 
-  public void updateOrderId(int id, Order order) {
+    public void updateOrderId(int id, Order order) {
 //    Order newOrder = new Order();
 //    newOrder.setId(id);
 //    newOrder.setNumberorder(order.getNumberorder());
 //    newOrder.setStatusorder(order.isStatusorder());
 //    orderService.getNewOrder(newOrder);
-  }
+    }
 
 
 //    private static Map<String, Store> orders = Map.of(
