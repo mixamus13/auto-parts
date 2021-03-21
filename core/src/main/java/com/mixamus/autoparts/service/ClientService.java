@@ -2,6 +2,7 @@ package com.mixamus.autoparts.service;
 
 import com.mixamus.autoparts.dao.ClientDao;
 import com.mixamus.autoparts.domain.Client;
+import com.mixamus.autoparts.dto.ClientDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +37,17 @@ public class ClientService {
 
     public Client findClientByFirstname(String userName) {
         return clientDao.findClientByFirstname(userName);
+    }
+
+    public static void updateClientId(int id, ClientDto clientDto, ClientService clientService) {
+        Client newClient = new Client();
+        newClient.setId(id);
+        newClient.setUsername(clientDto.getUsername());
+        newClient.setFirstname(clientDto.getFirstname());
+        newClient.setLastname(clientDto.getLastname());
+        newClient.setPassword(clientDto.getPassword());
+        newClient.setPhone(clientDto.getPhone());
+        clientService.updateClientById(newClient);
     }
 
 //    public void deleteByUsername(String userName) {

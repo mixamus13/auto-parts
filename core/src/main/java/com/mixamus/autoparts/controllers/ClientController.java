@@ -32,14 +32,7 @@ public class ClientController {
 
     @PutMapping("/clients/{id}")
     public void updateClientById(@PathVariable int id, @RequestBody ClientDto clientDto) {
-        Client newClient = new Client();
-        newClient.setId(id);
-        newClient.setUsername(clientDto.getUsername());
-        newClient.setFirstname(clientDto.getFirstname());
-        newClient.setLastname(clientDto.getLastname());
-        newClient.setPassword(clientDto.getPassword());
-        newClient.setPhone(clientDto.getPhone());
-        clientService.updateClientById(newClient);
+        clientService.updateClientId(id, clientDto, clientService);
     }
 
     @GetMapping("/clients/{userName}")
@@ -51,40 +44,4 @@ public class ClientController {
     public void deleteClientById(@PathVariable int id) {
         clientService.deleteClientById(id);
     }
-
-//    @DeleteMapping("user/{userName}")
-//    public void deleteUserByUserName(@PathVariable String userName) {
-//        usersService.deleteByUsername(userName);
-
-//    }
-
-
-//    private final UsersService usersService;
-//    private final CsvUsersRepository csvUsersRepository;
-//
-//    @Autowired
-//    public UserController(UsersService usersService, CsvUsersRepository csvUsersRepository) {
-//        this.usersService = usersService;
-//        this.csvUsersRepository = csvUsersRepository;
-//    }
-//
-//    @GetMapping("user/{id}")
-//    public List<String> getPartByIdCsv(@PathVariable int id) {
-//        return csvUsersRepository.getPartCsvId(id);
-//    }
-//
-//    @PostMapping("user/")
-//    public User createByUser(User user) {
-//        return usersService.create(user);
-//    }
-//
-//    @PutMapping("user/{userName}")
-//    public User updateUserByUserName(@PathVariable User userName) {
-//        return usersService.update(userName);
-//    }
-//
-//    @DeleteMapping("user/{userName}")
-//    public void deleteUserByUserName(@PathVariable String userName) {
-//        usersService.delete(userName);
-//    }
 }

@@ -14,6 +14,11 @@ public class CheckOrderNumberService {
 
     final PartsService partsService;
 
+    /**
+     *
+     * @param orderId number of order.
+     * @return order has part is available.
+     */
     public List<Part> getOrderIdAvailable(Integer orderId) {
         List<Part> listParts = new ArrayList<>();
         var partIsPresentOder = partsService.getPartById(orderId);
@@ -24,10 +29,13 @@ public class CheckOrderNumberService {
                     }
                 }
         );
-
         return listParts;
     }
 
+    /**
+     *
+     * @return all parts available.
+     */
     public List<Part> getPartsAvailable() {
         List<Part> allParts = partsService.getAllParts();
         return allParts.stream().filter(Part::isAvailability).collect(Collectors.toList());

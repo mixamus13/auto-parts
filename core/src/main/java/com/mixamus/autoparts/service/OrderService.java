@@ -37,13 +37,12 @@ public class OrderService {
     public void deleteByName(String numberOrder) {
 
     }
-
-    public void updateOrderId(int id, Order order) {
-//    Order newOrder = new Order();
-//    newOrder.setId(id);
-//    newOrder.setNumberorder(order.getNumberorder());
-//    newOrder.setStatusorder(order.isStatusorder());
-//    orderService.getNewOrder(newOrder);
+    public static void updateOrderId(int id, Order order, OrderService orderService) {
+        Order newOrder = new Order();
+        newOrder.setId(id);
+        newOrder.setNumberorder(order.getNumberorder());
+        newOrder.setStatusorder(order.isStatusorder());
+        orderService.getNewOrder(newOrder);
     }
 
 

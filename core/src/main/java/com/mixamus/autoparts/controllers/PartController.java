@@ -31,11 +31,6 @@ public class PartController {
         return partsService.getAllParts();
     }
 
-//    @GetMapping("parts/{id}")
-//    public Optional<Part> getPartById(@PathVariable int id) {
-//        return partsService.getPartById(id);
-//    }
-
     /**
      * Get part from id.
      *
@@ -73,13 +68,7 @@ public class PartController {
      */
     @PutMapping("/v1/parts/{id}")
     public void updatePartById(@PathVariable int id, @RequestBody PartDtoV1 partDtoV1) {
-        Part newPart = new Part();
-        newPart.setId(id);
-        newPart.setNamepart(partDtoV1.getNamepart());
-        newPart.setVin(partDtoV1.getVin());
-        newPart.setModel("n/a");
-        newPart.setYear(partDtoV1.getYear());
-        partsService.updatePartById(newPart);
+        partsService.updatePartByIdV1(id, partDtoV1, partsService);
     }
 
     /**
@@ -90,13 +79,7 @@ public class PartController {
      */
     @PutMapping("/v2/parts/{id}")
     public void updatePartById(@PathVariable int id, @RequestBody PartDtoV2 partDtoV2) {
-        Part newPart = new Part();
-        newPart.setId(id);
-        newPart.setNamepart(partDtoV2.getNamepart());
-        newPart.setVin(partDtoV2.getVin());
-        newPart.setModel(partDtoV2.getModel());
-        newPart.setYear(partDtoV2.getYear());
-        partsService.updatePartById(newPart);
+        partsService.updatePartByIdV2(id, partDtoV2, partsService);
     }
 
     /**
@@ -129,48 +112,4 @@ public class PartController {
     public void uploadImage(@PathVariable String namePart) {
         partsService.uploadImage(namePart);
     }
-
-    //    private final PartsRepository partsRepository;
-//    private final CsvPartsRepository csvPartsRepository;
-//
-//    @Autowired
-//    public PartController(PartsRepository partsRepository, CsvPartsRepository csvPartsRepository) {
-//        this.partsRepository = partsRepository;
-//        this.csvPartsRepository = csvPartsRepository;
-//    }
-//
-//    /**
-//     * Get part from id.
-//     * @param id number of part.
-//     * @return part with all data.
-//     */
-//    @GetMapping("part/{id}")
-//    public List<String> getPartByIdCsv(@PathVariable int id) {
-//        return csvPartsRepository.getPartCsvId(id);
-//    }
-//
-//    @GetMapping("/part/find{namePart}")
-//    public boolean findPartByStatus(@PathVariable String namePart) {
-//        return partsRepository.findPartByStatus(namePart);
-//    }
-//
-//    @PostMapping("part/")
-//    public Part createNewPart(Part part) {
-//        return partsRepository.create(part);
-//    }
-//
-//    @PostMapping("part/{namePart}/uploadImage")
-//    public void uploadImage(@PathVariable String image) {
-//        partsRepository.uploadImage(image);
-//    }
-//
-//    @PutMapping("part/{namePart}")
-//    public Part updatePartNamePart(@PathVariable Part namePart) {
-//        return partsRepository.update(namePart);
-//    }
-//
-//    @DeleteMapping("part/{namePart}")
-//    public void deletePart(@PathVariable String namePart) {
-//        partsRepository.delete(namePart);
-//    }
 }

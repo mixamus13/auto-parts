@@ -32,44 +32,11 @@ public class OrderController {
     @PutMapping("/orders/{id}")
     public void updateOrder(@PathVariable int id,
                             @RequestBody Order order) {
-        Order newOrder = new Order();
-        newOrder.setId(id);
-        newOrder.setNumberorder(order.getNumberorder());
-        newOrder.setStatusorder(order.isStatusorder());
-        orderService.getNewOrder(newOrder);
+        OrderService.updateOrderId(id, order, orderService);
     }
 
     @DeleteMapping("/orders/{id}")
     public void deleteByNumberOrder(@PathVariable int id) {
         orderService.delete(id);
     }
-
-//    @DeleteMapping("/order/{numberOrder}")
-//    public void deleteByNumberOrder(@PathVariable String numberOrder) {
-//        storeService.deleteByName(numberOrder);
-
-//    }
-
-
-//    StoreService storeService;
-//
-//    public StoreController(StoreService storeService) {
-//        this.storeService = storeService;
-//    }
-//
-//    @GetMapping("store/order/{numberOrder}")
-//    public Store getByNumberOrder(@PathVariable String numberOrder) {
-//        return storeService.getByName(numberOrder);
-//    }
-//
-//    @PostMapping("/store/order")
-//    public Store getNewOrder(Store store) {
-//        Store newOrder = new Store();
-//        return storeService.create(store);
-//    }
-//
-//    @DeleteMapping("store/order/{numberOrder}")
-//    public void deleteByNumberOrder(@PathVariable String numberOrder) {
-//        storeService.delete(numberOrder);
-//    }
 }
