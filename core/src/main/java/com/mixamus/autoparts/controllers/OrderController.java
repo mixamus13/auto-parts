@@ -3,6 +3,7 @@ package com.mixamus.autoparts.controllers;
 import com.mixamus.autoparts.domain.Order;
 import com.mixamus.autoparts.service.OrderService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,6 +34,7 @@ public class OrderController {
     }
 
     @PostMapping("/orders/")
+    @ResponseStatus(HttpStatus.CREATED)
     public void getNewOrder(@RequestBody Order order) {
         orderService.getNewOrder(order);
     }

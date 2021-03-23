@@ -4,6 +4,7 @@ import com.mixamus.autoparts.domain.Client;
 import com.mixamus.autoparts.dto.ClientDto;
 import com.mixamus.autoparts.service.ClientService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,7 +35,8 @@ public class ClientController {
     }
 
     @PostMapping("/clients/")
-    public Client createByClient(@RequestBody Client user) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public Client createNewClient(@RequestBody Client user) {
         return clientService.createClient(user);
     }
 

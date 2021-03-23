@@ -64,8 +64,8 @@ public class PartController {
      * @param part part.
      * @return new part.
      */
-    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/parts/")
+    @ResponseStatus(HttpStatus.CREATED)
     public Part createPart(@RequestBody Part part) {
         return partsService.createPart(part);
     }
