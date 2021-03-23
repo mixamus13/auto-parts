@@ -10,13 +10,13 @@ import javax.persistence.Id;
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
 @ToString
 @Entity
 public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     int id;
 
     String username;

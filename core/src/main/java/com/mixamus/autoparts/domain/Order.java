@@ -9,7 +9,6 @@ import java.util.List;
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
 @ToString
 @Entity
 @Table(name = "orders")
@@ -17,6 +16,7 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     int id;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
