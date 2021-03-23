@@ -12,7 +12,7 @@ import java.util.List;
 @EqualsAndHashCode
 @ToString
 @Entity
-@Table(name = "ordername")
+@Table(name = "orders")
 public class Order {
 
     @Id

@@ -13,10 +13,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
 public class PartsService {
 
     final PartDao partDao;
+
+    public PartsService(PartDao partDao) {
+        this.partDao = partDao;
+    }
 
     public List<Part> getAllParts() {
         return partDao.findAll();

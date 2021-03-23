@@ -9,10 +9,13 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@AllArgsConstructor
 public class OrderController {
 
     final OrderService orderService;
+
+    public OrderController(OrderService orderService) {
+        this.orderService = orderService;
+    }
 
     @GetMapping("/orders/")
     public List<Order> getAllOrder() {
@@ -22,6 +25,11 @@ public class OrderController {
     @GetMapping("/orders/{id}")
     public Optional<Order> getOrderById(@PathVariable int id) {
         return orderService.getOrderById(id);
+    }
+
+    @GetMapping("/orders/numberorder/{numberOrder}")
+    public Order getOrderByNumberorder(@PathVariable String numberOrder) {
+        return  orderService.getOrderName(numberOrder);
     }
 
     @PostMapping("/orders/")

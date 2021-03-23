@@ -10,10 +10,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
 public class ClientService {
 
     final ClientDao clientDao;
+
+    public ClientService(ClientDao clientDao) {
+        this.clientDao = clientDao;
+    }
 
     public List<Client> getAllUsers() {
         return clientDao.findAll();
@@ -35,11 +38,11 @@ public class ClientService {
         clientDao.save(userName);
     }
 
-    public Client findClientByFirstname(String userName) {
-        return clientDao.findClientByFirstname(userName);
+    public Client findClientByFirstname(String firstName) {
+        return clientDao.getClientByFirstname(firstName);
     }
 
-    public static void updateClientId(int id, ClientDto clientDto, ClientService clientService) {
+    public void updateClientId(int id, ClientDto clientDto, ClientService clientService) {
         Client newClient = new Client();
         newClient.setId(id);
         newClient.setUsername(clientDto.getUsername());

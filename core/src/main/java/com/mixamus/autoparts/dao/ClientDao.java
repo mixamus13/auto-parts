@@ -6,7 +6,5 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 public interface ClientDao extends JpaRepository<Client, Integer>, JpaSpecificationExecutor<Client> {
 
-    //void delete(String userName);
-
-    Client findClientByFirstname(String firstname);
+    Client getClientByFirstname(String firstname);
 }

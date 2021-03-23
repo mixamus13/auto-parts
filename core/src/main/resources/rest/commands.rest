@@ -1,0 +1,35 @@
+###
+POST http://localhost:8888/orders/
+Content-Type: application/json
+
+[
+  {
+    "numberorder": "556432",
+    "statusorder": false
+  },
+  {
+    "numberorder": "498000",
+    "statusorder": true
+  },
+  {
+    "numberorder": "123876",
+    "statusorder": false
+  },
+  {
+    "numberorder": "332211",
+    "statusorder": true
+  },
+  {
+    "numberorder": "983456",
+    "statusorder": true
+  },
+  {
+    "numberorder": "165798",
+    "statusorder": false
+  },
+  {
+    "numberorder": "556432",
+    "statusorder": true
+  }
+]
+

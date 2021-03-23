@@ -10,17 +10,25 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@AllArgsConstructor
 public class ClientController {
 
     final ClientService clientService;
+
+    public ClientController(ClientService clientService) {
+        this.clientService = clientService;
+    }
 
     @GetMapping("/clients/")
     public List<Client> allClients() {
         return clientService.getAllUsers();
     }
 
-    @GetMapping("/clients/{id}")
+    @GetMapping("/clients/{firstName}")
+    public Client updateClientByUsername(@PathVariable String firstName) {
+        return clientService.findClientByFirstname(firstName);
+    }
+
+    @GetMapping("/clients/byid/{id}")
     public Optional<Client> getClientById(@PathVariable int id) {
         return clientService.getClientById(id);
     }
@@ -33,11 +41,6 @@ public class ClientController {
     @PutMapping("/clients/{id}")
     public void updateClientById(@PathVariable int id, @RequestBody ClientDto clientDto) {
         clientService.updateClientId(id, clientDto, clientService);
-    }
-
-    @GetMapping("/clients/{userName}")
-    public Client updateClientByUsername(@PathVariable String userName) {
-        return clientService.findClientByFirstname(userName);
     }
 
     @DeleteMapping("/clients/{id}")

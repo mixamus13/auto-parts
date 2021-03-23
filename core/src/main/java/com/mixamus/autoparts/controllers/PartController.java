@@ -1,5 +1,6 @@
 package com.mixamus.autoparts.controllers;
 
+import com.mixamus.autoparts.domain.Client;
 import com.mixamus.autoparts.domain.Part;
 import com.mixamus.autoparts.dto.PartDtoV1;
 import com.mixamus.autoparts.dto.PartDtoV2;
@@ -11,15 +12,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
-@AllArgsConstructor
 public class PartController {
 
     final PartsService partsService;
+
+    public PartController(PartsService partsService) {
+        this.partsService = partsService;
+    }
 
     /**
      * Get all parts.
@@ -32,13 +37,13 @@ public class PartController {
     }
 
     /**
-     * Get part from id.
+     * Get part from id Hateoas.
      *
      * @param id number of part.
      * @return part with all data.
      */
-    @GetMapping("/parts/{id}")
-    EntityModel<Part> getPartById(@PathVariable int id) {
+    @GetMapping("/parts/hat/{id}")
+    EntityModel<Part> getPartByIdHateoas(@PathVariable int id) {
 
         Part part = partsService.getPartById(id) //
                 .orElseThrow(() -> new PartNotFoundException(id));
@@ -46,6 +51,11 @@ public class PartController {
         return EntityModel.of(part,
                 linkTo(methodOn(PartController.class).getPartById(id)).withSelfRel(),
                 linkTo(methodOn(PartController.class).getAllParts()).withRel("parts"));
+    }
+
+    @GetMapping("/parts/{id}")
+    public Optional<Part> getPartById(@PathVariable int id) {
+        return partsService.getPartById(id);
     }
 
     /**
