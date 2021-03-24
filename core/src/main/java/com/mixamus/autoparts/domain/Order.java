@@ -11,19 +11,15 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name = "orders")
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @EqualsAndHashCode.Include
     int id;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
-    private List<Part> part;
-
     String numberorder;
 
-    boolean statusorder; // сделать Enum
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Part> part;
 }

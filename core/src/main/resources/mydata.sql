@@ -33,17 +33,17 @@ VALUES ('ilinner6', 'Inesita', 'Linner', 'vBbl5JOgW', 1614234106);
 
 
 -- ORDER:
-INSERT INTO orders (numberorder, statusorder)
-VALUES ('32453325237', true);
-INSERT INTO orders (numberorder, statusorder)
-VALUES ('35456564565', false);
-INSERT INTO orders (numberorder, statusorder)
-VALUES ('76469654546', true);
-INSERT INTO orders (numberorder, statusorder)
-VALUES ('96756546424', true);
-INSERT INTO orders (numberorder, statusorder)
-VALUES ('11134466775', true);
-INSERT INTO orders (numberorder, statusorder)
-VALUES ('21215668655', false);
-INSERT INTO orders (numberorder, statusorder)
-VALUES ('11111367888', true);
+INSERT INTO "Order" (numberorder)
+VALUES ('32453325237');
+INSERT INTO "Order" (numberorder)
+VALUES ('35456564565');
+INSERT INTO "Order" (numberorder)
+VALUES ('76469654546');
+INSERT INTO "Order" (numberorder)
+VALUES ('96756546424');
+INSERT INTO "Order" (numberorder)
+VALUES ('11134466775');
+INSERT INTO "Order" (numberorder)
+VALUES ('21215668655');
+INSERT INTO "Order" (numberorder)
+VALUES ('11111367888');

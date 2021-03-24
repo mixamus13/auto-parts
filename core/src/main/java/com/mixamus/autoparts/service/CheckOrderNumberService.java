@@ -24,27 +24,14 @@ public class CheckOrderNumberService {
      * @return order has part is available.
      */
     public List<Part> getOrderIdMissing(String orderId) {
-        var maybeOrder = orderService.getOrderName(orderId);
-        List<Part> allParts;
-        if (maybeOrder.isStatusorder()) {
-            allParts = partsService.getAllParts().stream().filter(Part::isAvailability).collect(Collectors.toList());
-        } else {
-            throw new OrderNotFoundException(orderId);
-        }
-        return allParts;
+        return null;
     }
 
     /**
      * @return all parts available.
      */
     public List<Part> getPartsAvailable() {
-        List<Part> allParts = partsService.getAllParts();
-        List<Part> list = new ArrayList<>();
-        for (Part allPart : allParts) {
-            if (allPart.isAvailability()) {
-                list.add(allPart);
-            }
-        }
-        return list;
+
+        return null;
     }
 }

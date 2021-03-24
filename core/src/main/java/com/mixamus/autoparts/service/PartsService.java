@@ -49,23 +49,23 @@ public class PartsService {
     }
 
     public void updatePartByIdV1(int id, PartDtoV1 partDtoV1, PartsService partsService) {
-        Part newPart = new Part();
-        newPart.setId(id);
-        newPart.setNamepart(partDtoV1.getNamepart());
-        newPart.setVin(partDtoV1.getVin());
-        newPart.setModel("n/a");
-        newPart.setYear(partDtoV1.getYear());
-        partsService.updatePartById(newPart);
+//        Part newPart = new Part();
+//        newPart.setId(id);
+//        newPart.setNamepart(partDtoV1.getNamepart());
+//        newPart.setVin(partDtoV1.getVin());
+//        newPart.setModel("n/a");
+//        newPart.setYear(partDtoV1.getYear());
+//        partsService.updatePartById(newPart);
     }
 
     public void updatePartByIdV2(int id, PartDtoV2 partDtoV2, PartsService partsService) {
-        Part newPart = new Part();
-        newPart.setId(id);
-        newPart.setNamepart(partDtoV2.getNamepart());
-        newPart.setVin(partDtoV2.getVin());
-        newPart.setModel(partDtoV2.getModel());
-        newPart.setYear(partDtoV2.getYear());
-        partsService.updatePartById(newPart);
+//        Part newPart = new Part();
+//        newPart.setId(id);
+//        newPart.setNamepart(partDtoV2.getNamepart());
+//        newPart.setVin(partDtoV2.getVin());
+//        newPart.setModel(partDtoV2.getModel());
+//        newPart.setYear(partDtoV2.getYear());
+//        partsService.updatePartById(newPart);
     }
 
 //    private static Map<String, Part> parts = Map.of(

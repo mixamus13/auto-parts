@@ -2,10 +2,8 @@ package com.mixamus.autoparts.domain;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Data
 @RequiredArgsConstructor
@@ -15,7 +13,7 @@ import javax.persistence.Id;
 public class Client {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @EqualsAndHashCode.Include
     int id;
 
@@ -28,4 +26,7 @@ public class Client {
     String password;
 
     String phone;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Order> orders;
 }
