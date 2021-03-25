@@ -17,6 +17,7 @@ CREATE TABLE OrderID
 (
     id          BIGINT GENERATED ALWAYS AS IDENTITY NOT NULL,
     numberorder VARCHAR(255)                        NOT NULL,
+    client_id BIGINT,
     PRIMARY KEY (id)
 );
 
@@ -32,25 +33,10 @@ CREATE TABLE Part
 );
 
 
--- TABLE: client_order @OneToMany
-CREATE TABLE client_orderid
-(
-    Client_id BIGINT NOT NULL,
-    orderid_id  BIGINT NOT NULL
-);
-
-ALTER TABLE client_orderid
-    ADD CONSTRAINT client_orderid__unique
-        UNIQUE (orderid_id);
-
-
-ALTER TABLE client_orderid
-    ADD CONSTRAINT client_orderid__order_fk
-        FOREIGN KEY (orderid_id) REFERENCES OrderID;
-
-ALTER TABLE client_orderid
-    ADD CONSTRAINT client_orderid__client_fk
-        FOREIGN KEY (Client_id) REFERENCES Client;
+-- TABLE: client_order @ManyToOne
+ALTER TABLE OrderID
+    ADD CONSTRAINT client_id__fk
+        FOREIGN KEY (client_id) REFERENCES Client;
 
 
 -- TABLE: order_part @ManyToMany

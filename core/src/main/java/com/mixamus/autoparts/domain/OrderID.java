@@ -23,4 +23,8 @@ public class OrderID {
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JsonIgnore
     private List<Part> part;
+
+    @ManyToOne
+    @JoinColumn(name = "client_id", foreignKey = @ForeignKey(name = "client_id__fk"))
+    private Client client;
 }

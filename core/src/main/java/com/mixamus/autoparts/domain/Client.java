@@ -27,8 +27,4 @@ public class Client {
     String password;
 
     String phone;
-
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
-    private List<OrderID> orderIDS;
 }

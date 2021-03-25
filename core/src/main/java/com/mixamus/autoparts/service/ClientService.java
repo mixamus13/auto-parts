@@ -43,13 +43,13 @@ public class ClientService {
     }
 
     public void updateClientId(int id, ClientDto clientDto, ClientService clientService) {
-//        Client newClient = new Client();
-//        newClient.setId(id);
-//        newClient.setUsername(clientDto.getUsername());
-//        newClient.setFirstname(clientDto.getFirstname());
-//        newClient.setLastname(clientDto.getLastname());
-//        newClient.setPassword(clientDto.getPassword());
-//        newClient.setPhone(clientDto.getPhone());
-//        clientService.updateClientById(newClient);
+        Client newClient = new Client();
+        newClient.setId(id);
+        newClient.setUsername(clientDto.getUsername());
+        newClient.setFirstname(clientDto.getFirstname());
+        newClient.setLastname(clientDto.getLastname());
+        newClient.setPassword(clientDto.getPassword());
+        newClient.setPhone(clientDto.getPhone());
+        clientService.updateClientById(newClient);
     }
 }

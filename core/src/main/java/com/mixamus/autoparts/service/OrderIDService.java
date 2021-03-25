@@ -41,9 +41,9 @@ public class OrderIDService {
     }
 
     public static void updateOrderId(int id, OrderID orderID, OrderIDService orderIDService) {
-//        OrderID newOrderID = new OrderID();
-//        newOrderID.setId(id);
-//        newOrderID.setNumberorder(orderID.getNumberorder());
-//        orderIDService.getNewOrder(newOrderID);
+        OrderID newOrderID = new OrderID();
+        newOrderID.setId(id);
+        newOrderID.setNumberorder(orderID.getNumberorder());
+        orderIDService.getNewOrder(newOrderID);
     }
 }
