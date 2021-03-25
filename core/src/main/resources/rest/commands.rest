@@ -1,5 +1,5 @@
 ###
-POST http://localhost:8888/orders/
+POST http://localhost:8888/orderid/
 Content-Type: application/json
 
 [

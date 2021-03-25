@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Entity
-public class Order {
+public class OrderID {
 
     @Id
     @GeneratedValue
@@ -21,5 +21,6 @@ public class Order {
     String numberorder;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JsonIgnore
     private List<Part> part;
 }

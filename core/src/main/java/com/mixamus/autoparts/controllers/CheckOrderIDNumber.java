@@ -11,11 +11,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("check/")
-public class CheckOrderNumber {
+public class CheckOrderIDNumber {
 
     final CheckOrderNumberService checkOrderNumberService;
 
-    public CheckOrderNumber(CheckOrderNumberService checkOrderNumberService) {
+    public CheckOrderIDNumber(CheckOrderNumberService checkOrderNumberService) {
         this.checkOrderNumberService = checkOrderNumberService;
     }
 
@@ -34,8 +34,3 @@ public class CheckOrderNumber {
         return null;
     }
 }
-
-/*
-  Сделать заказ, получить по номеру заказа, чего нет в наличии.
-  (есть в заказе но нет в наличии.)
- */

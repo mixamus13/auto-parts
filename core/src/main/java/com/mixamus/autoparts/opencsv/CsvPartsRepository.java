@@ -13,15 +13,15 @@ import java.util.function.Supplier;
 public class CsvPartsRepository {
 
     public static void main(String[] args) {
-        getNeedCsvFile(2);
+//        getNeedCsvFile("2");
     }
 
     /**
      * @param id
      */
-    @SneakyThrows
-    public static void getNeedCsvFile(Integer id) {
-
+//    @SneakyThrows
+//    public static void getNeedCsvFile(String id) {
+//
 //        Supplier<String> br1 = () -> getPartCsvId(id, "MOCK_DATA_PARTS_1.csv").toString();
 //        Supplier<String> br2 = () -> getPartCsvId(id, "MOCK_DATA_PARTS_2.csv").toString();
 //        Supplier<String> br3 = () -> getPartCsvId(id, "MOCK_DATA_PARTS_3.csv").toString();
@@ -33,7 +33,7 @@ public class CsvPartsRepository {
 //        System.out.println(firsts.get());
 //        System.out.println(seconds.get());
 //        System.out.println(thirds.get());
-    }
+//    }
 
     /**
      * @param id       Part.
@@ -41,7 +41,7 @@ public class CsvPartsRepository {
      * @return Part.
      */
 //    @SneakyThrows
-//    public static List<Part> getPartCsvId(Integer id, String fileName) {
+//    public static List<Part> getPartCsvId(String id, String fileName) {
 //        List<Part> records = new ArrayList<>();
 //        BufferedReader br = new BufferedReader(new FileReader(fileName));
 //        String line;
@@ -50,7 +50,7 @@ public class CsvPartsRepository {
 //        while ((line = br.readLine()) != null) {
 //            String[] values = line.split(",");
 //            if (values.length > 1 && values[0].equals(id)) {
-//                part.setId(id);
+//                part.setId(Integer.parseInt(id));
 //                part.setNamepart(values[1]);
 //                part.setVin(values[2]);
 //                part.setModel(values[3]);

@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS Part;
-DROP TABLE IF EXISTS "Order";
+DROP TABLE IF EXISTS OrderID;
 DROP TABLE IF EXISTS Client;
 
 CREATE TABLE Client
@@ -13,7 +13,7 @@ CREATE TABLE Client
     PRIMARY KEY (id)
 );
 
-CREATE TABLE "Order"
+CREATE TABLE OrderID
 (
     id          BIGINT GENERATED ALWAYS AS IDENTITY NOT NULL,
     numberorder VARCHAR(255)                        NOT NULL,
@@ -33,41 +33,41 @@ CREATE TABLE Part
 
 
 -- TABLE: client_order @OneToMany
-CREATE TABLE client_order
+CREATE TABLE client_orderid
 (
     Client_id BIGINT NOT NULL,
-    order_id  BIGINT NOT NULL
+    orderid_id  BIGINT NOT NULL
 );
 
-ALTER TABLE client_order
-    ADD CONSTRAINT client_order__unique
-        UNIQUE (order_id);
+ALTER TABLE client_orderid
+    ADD CONSTRAINT client_orderid__unique
+        UNIQUE (orderid_id);
 
 
-ALTER TABLE client_order
-    ADD CONSTRAINT client_order__order_fk
-        FOREIGN KEY (order_id) REFERENCES "Order";
+ALTER TABLE client_orderid
+    ADD CONSTRAINT client_orderid__order_fk
+        FOREIGN KEY (orderid_id) REFERENCES OrderID;
 
-ALTER TABLE client_order
-    ADD CONSTRAINT client_order__client_fk
+ALTER TABLE client_orderid
+    ADD CONSTRAINT client_orderid__client_fk
         FOREIGN KEY (Client_id) REFERENCES Client;
 
 
 -- TABLE: order_part @ManyToMany
-CREATE TABLE order_part
+CREATE TABLE orderid_part
 (
-    order_id BIGINT NOT NULL,
+    orderid_id BIGINT NOT NULL,
     part_id  BIGINT NOT NULL
 );
 
-ALTER TABLE "Order"
-    ADD CONSTRAINT order__unique
+ALTER TABLE OrderID
+    ADD CONSTRAINT orderid__unique
         UNIQUE (numberorder);
 
-ALTER TABLE order_part
-    ADD CONSTRAINT order_part__part_fk
+ALTER TABLE orderid_part
+    ADD CONSTRAINT orderid_part__part_fk
         FOREIGN KEY (part_id) REFERENCES Part;
 
-ALTER TABLE order_part
-    ADD CONSTRAINT order_part__order_fk
-        FOREIGN KEY (order_id) REFERENCES "Order";
+ALTER TABLE orderid_part
+    ADD CONSTRAINT orderid_part__orderid_fk
+        FOREIGN KEY (orderid_id) REFERENCES OrderID;

@@ -32,18 +32,28 @@ INSERT INTO client(username, firstname, lastname, password, phone)
 VALUES ('ilinner6', 'Inesita', 'Linner', 'vBbl5JOgW', 1614234106);
 
 
--- ORDER:
-INSERT INTO "Order" (numberorder)
+-- ORDERID:
+INSERT INTO orderid (numberorder)
 VALUES ('32453325237');
-INSERT INTO "Order" (numberorder)
+INSERT INTO orderid (numberorder)
 VALUES ('35456564565');
-INSERT INTO "Order" (numberorder)
+INSERT INTO orderid (numberorder)
 VALUES ('76469654546');
-INSERT INTO "Order" (numberorder)
+INSERT INTO orderid (numberorder)
 VALUES ('96756546424');
-INSERT INTO "Order" (numberorder)
+INSERT INTO orderid (numberorder)
 VALUES ('11134466775');
-INSERT INTO "Order" (numberorder)
+INSERT INTO orderid (numberorder)
 VALUES ('21215668655');
-INSERT INTO "Order" (numberorder)
+INSERT INTO orderid (numberorder)
 VALUES ('11111367888');
+INSERT INTO orderid (numberorder)
+VALUES ('57767764352');
+INSERT INTO orderid (numberorder)
+VALUES ('96572365214');
+INSERT INTO orderid (numberorder)
+VALUES ('88625346428');
+INSERT INTO orderid (numberorder)
+VALUES ('90000042242');
+INSERT INTO orderid (numberorder)
+VALUES ('80000242434');

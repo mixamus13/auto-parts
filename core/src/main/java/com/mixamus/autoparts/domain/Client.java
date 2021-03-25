@@ -1,5 +1,6 @@
 package com.mixamus.autoparts.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -28,5 +29,6 @@ public class Client {
     String phone;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Order> orders;
+    @JsonIgnore
+    private List<OrderID> orderIDS;
 }

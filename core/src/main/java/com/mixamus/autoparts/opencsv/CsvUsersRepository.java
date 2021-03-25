@@ -4,7 +4,9 @@ import lombok.SneakyThrows;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +14,7 @@ import java.util.List;
 @Component
 public class CsvUsersRepository {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.println("Part csv by Id = " + getPartCsvId(5));
     }
 
@@ -23,8 +25,7 @@ public class CsvUsersRepository {
      * @return Part for id.
      */
 
-    @SneakyThrows
-    public static List<String> getPartCsvId(int id) {
+    public static List<String> getPartCsvId(int id) throws IOException {
         List<List<String>> records = new ArrayList<>();
         BufferedReader br = new BufferedReader(new FileReader("MOCK_DATA_USERS.csv"));
         String line;

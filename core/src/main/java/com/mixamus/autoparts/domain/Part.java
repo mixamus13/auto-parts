@@ -1,7 +1,7 @@
 package com.mixamus.autoparts.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
 import java.util.List;
@@ -29,5 +29,6 @@ public class Part {
     boolean availability;
 
     @ManyToMany(mappedBy = "part")
-    private List<Order> orders;
+    @JsonIgnore
+    private List<OrderID> orderIDS;
 }
