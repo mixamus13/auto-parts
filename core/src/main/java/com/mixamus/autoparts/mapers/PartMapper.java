@@ -5,10 +5,8 @@ package com.mixamus.autoparts.mapers;
 //import org.mapstruct.Mapper;
 //import org.mapstruct.factory.Mappers;
 //
-//@Mapper
+//@Mapper(componentModel = "spring")
 //public interface PartMapper {
 //
-//    PartMapper INSTANCE = Mappers.getMapper(PartMapper.class);
-//
-//    PartDtoV2 toDto(Part part);
+//    PartDtoV2 PartDaoToPartDto(Part part);
 //}

@@ -2,19 +2,18 @@ package com.mixamus.autoparts.service;
 
 import com.mixamus.autoparts.dao.OrderIDDao;
 import com.mixamus.autoparts.domain.OrderID;
+import com.mixamus.autoparts.domain.Part;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class OrderIDService {
 
     final OrderIDDao orderIDDao;
-
-    public OrderIDService(OrderIDDao orderIDDao) {
-        this.orderIDDao = orderIDDao;
-    }
 
     public List<OrderID> getAllOrder() {
         return orderIDDao.findAll();

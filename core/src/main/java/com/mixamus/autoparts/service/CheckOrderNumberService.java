@@ -1,36 +1,46 @@
 package com.mixamus.autoparts.service;
 
 import com.mixamus.autoparts.domain.Part;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class CheckOrderNumberService {
 
-    final PartsService partsService;
     final OrderIDService orderIDService;
 
-    @Autowired
-    public CheckOrderNumberService(PartsService partsService, OrderIDService orderIDService) {
-        this.partsService = partsService;
-        this.orderIDService = orderIDService;
-    }
-
     /**
-     * @param orderId number of order.
-     * @return order has part is available.
+     * Returns the parts of the order that are in stock.
+     *
+     * @param numberorder number order.
+     * @return parts is available.
      */
-    public List<Part> getOrderIdMissing(String orderId) {
-        return null;
-    }
-
-    /**
-     * @return all parts available.
-     */
-    public List<Part> getPartsAvailable() {
-
-        return null;
+    public List<Part> getMissingPartsByOrder(String numberorder) {
+        var parts = orderIDService.getOrderName(numberorder).getPart();
+        return parts.stream().filter(Part::isAvailability).collect(Collectors.toList());
     }
 }
+
+/*
+        Получить Order,
+        получить все его Part (получить по Order Part(s)),
+        проверить какие Part есть в наличии,
+        вернуть Order с Part что есть в наличии.
+*/
+
+/*
+public List<Part> getMissingPartsByOrder(String numberorder) {
+        List<Part> partAvailableOrder = new ArrayList<>();
+        var parts = orderIDService.getOrderName(numberorder).getPart();
+        for (Part p : parts) {
+            if (p.isAvailability()) {
+                partAvailableOrder.add(p);
+            }
+        }
+        return partAvailableOrder;
+    }
+ */

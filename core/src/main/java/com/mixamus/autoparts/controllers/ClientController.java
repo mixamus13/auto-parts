@@ -11,17 +11,14 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@AllArgsConstructor
 public class ClientController {
 
     final ClientService clientService;
 
-    public ClientController(ClientService clientService) {
-        this.clientService = clientService;
-    }
-
     @GetMapping("/clients/")
     public List<Client> allClients() {
-        return clientService.getAllUsers();
+        return clientService.getAllClients();
     }
 
     @GetMapping("/clients/{firstName}")
@@ -29,7 +26,7 @@ public class ClientController {
         return clientService.findClientByFirstname(firstName);
     }
 
-    @GetMapping("/clients/byid/{id}")
+    @GetMapping("/clients/clientid/{id}")
     public Optional<Client> getClientById(@PathVariable int id) {
         return clientService.getClientById(id);
     }

@@ -2,8 +2,10 @@ package com.mixamus.autoparts.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -20,11 +22,12 @@ public class OrderID {
 
     String numberorder;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JsonIgnore
-    private List<Part> part;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Part> part = new ArrayList<>();
 
-    @ManyToOne
-    @JoinColumn(name = "client_id", foreignKey = @ForeignKey(name = "client_id__fk"))
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "client_id")
     private Client client;
 }

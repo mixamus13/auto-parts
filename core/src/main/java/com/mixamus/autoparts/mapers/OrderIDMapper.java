@@ -5,10 +5,8 @@ package com.mixamus.autoparts.mapers;
 //import org.mapstruct.Mapper;
 //import org.mapstruct.factory.Mappers;
 //
-//@Mapper
+//@Mapper(componentModel = "spring")
 //public interface OrderIDMapper {
 //
-//    OrderIDMapper INSTANCE = Mappers.getMapper(OrderIDMapper.class);
-//
-//    OrderDto toDto(OrderID orderID);
+//    OrderDto OrderToOrderDto(OrderID orderID);
 //}

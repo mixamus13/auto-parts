@@ -1,7 +1,9 @@
 package com.mixamus.autoparts.controllers;
 
 import com.mixamus.autoparts.domain.OrderID;
+import com.mixamus.autoparts.dto.OrderDto;
 import com.mixamus.autoparts.service.OrderIDService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,13 +11,10 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@AllArgsConstructor
 public class OrderIDController {
 
     final OrderIDService orderIDService;
-
-    public OrderIDController(OrderIDService orderIDService) {
-        this.orderIDService = orderIDService;
-    }
 
     @GetMapping("/orderid/")
     public List<OrderID> getAllOrder() {
@@ -28,8 +27,11 @@ public class OrderIDController {
     }
 
     @GetMapping("/orderid/numberorder/{numberOrder}")
-    public OrderID getOrderByNumberorder(@PathVariable String numberOrder) {
-        return  orderIDService.getOrderName(numberOrder);
+    public OrderDto getOrderByNumberorder(@PathVariable String numberOrder) {
+        OrderID domainOrder = orderIDService.getOrderName(numberOrder);
+        OrderDto orderDto = new OrderDto();
+        orderDto.setNumberOrder(domainOrder.getNumberorder());
+        return orderDto;
     }
 
     @PostMapping("/orderid/")

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -28,7 +29,14 @@ public class Part {
 
     boolean availability;
 
-    @ManyToMany(mappedBy = "part")
     @JsonIgnore
-    private List<OrderID> orderIDS;
+    @ManyToMany(mappedBy = "part")
+    private List<OrderID> orderID = new ArrayList<>();
+
 }
+/*
+    Аннотация @JoinColumn указывает на столбец, который осуществляет связь с другим объектом.
+
+    Cascade операций – это выполнение операции не только для Entity, на котором операция вызывается,
+    но и на связанных с ним Entity
+ */

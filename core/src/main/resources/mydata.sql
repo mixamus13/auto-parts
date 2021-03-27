@@ -47,13 +47,3 @@ INSERT INTO orderid (numberorder)
 VALUES ('21215668655');
 INSERT INTO orderid (numberorder)
 VALUES ('11111367888');
-INSERT INTO orderid (numberorder)
-VALUES ('57767764352');
-INSERT INTO orderid (numberorder)
-VALUES ('96572365214');
-INSERT INTO orderid (numberorder)
-VALUES ('88625346428');
-INSERT INTO orderid (numberorder)
-VALUES ('90000042242');
-INSERT INTO orderid (numberorder)
-VALUES ('80000242434');

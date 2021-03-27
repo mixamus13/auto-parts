@@ -10,15 +10,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class ClientService {
 
     final ClientDao clientDao;
 
-    public ClientService(ClientDao clientDao) {
-        this.clientDao = clientDao;
-    }
-
-    public List<Client> getAllUsers() {
+    public List<Client> getAllClients() {
         return clientDao.findAll();
     }
 

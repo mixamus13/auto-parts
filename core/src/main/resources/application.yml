@@ -15,8 +15,8 @@ spring:
       password: qwerty13
 
   jpa:
-    open-in-view: false
-    show-sql: true # false стоит по умолчанию, с true будет в консоли гененировать sql запросы
+    open-in-view: true
+    show-sql: true # false стоит по умолчанию, с true будет в консоли генерировать sql запросы
 
   flyway:
     baseline-on-migrate: true
