@@ -36,8 +36,8 @@ public class OrderIDController {
 
     @PostMapping("/orderid/")
     @ResponseStatus(HttpStatus.CREATED)
-    public void getNewOrder(@RequestBody OrderID orderID) {
-        orderIDService.getNewOrder(orderID);
+    public void createNewOrder(@RequestBody OrderID orderID) {
+        orderIDService.createNewOrder(orderID);
     }
 
     @PutMapping("/orderid/{id}")

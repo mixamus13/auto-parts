@@ -27,12 +27,16 @@ public class Part {
 
     int year;
 
+    //StatusOrderID statuspart;
+
     boolean availability;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "part")
+    @ManyToMany(mappedBy = "part", cascade = {
+            CascadeType.DETACH, CascadeType.MERGE,
+            CascadeType.PERSIST, CascadeType.REFRESH
+    })
     private List<OrderID> orderID = new ArrayList<>();
-
 }
 /*
     Аннотация @JoinColumn указывает на столбец, который осуществляет связь с другим объектом.

@@ -2,7 +2,6 @@ package com.mixamus.autoparts.service;
 
 import com.mixamus.autoparts.dao.OrderIDDao;
 import com.mixamus.autoparts.domain.OrderID;
-import com.mixamus.autoparts.domain.Part;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +12,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class OrderIDService {
 
-    final OrderIDDao orderIDDao;
+    private final OrderIDDao orderIDDao;
 
     public List<OrderID> getAllOrder() {
         return orderIDDao.findAll();
@@ -27,7 +26,7 @@ public class OrderIDService {
         return orderIDDao.getByNumberorder(name);
     }
 
-    public void getNewOrder(OrderID orderID) {
+    public void createNewOrder(OrderID orderID) {
         orderIDDao.save(orderID);
     }
 
@@ -43,6 +42,6 @@ public class OrderIDService {
         OrderID newOrderID = new OrderID();
         newOrderID.setId(id);
         newOrderID.setNumberorder(orderID.getNumberorder());
-        orderIDService.getNewOrder(newOrderID);
+        orderIDService.createNewOrder(newOrderID);
     }
 }

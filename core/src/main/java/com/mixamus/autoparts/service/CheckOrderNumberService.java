@@ -33,8 +33,10 @@ public class CheckOrderNumberService {
 */
 
 /*
-public List<Part> getMissingPartsByOrder(String numberorder) {
-        List<Part> partAvailableOrder = new ArrayList<>();
+var parts = orderIDService.getOrderName(numberorder).getPart();
+return parts.stream().filter(Part::isAvailability).collect(Collectors.toList());
+
+List<Part> partAvailableOrder = new ArrayList<>();
         var parts = orderIDService.getOrderName(numberorder).getPart();
         for (Part p : parts) {
             if (p.isAvailability()) {
@@ -42,5 +44,4 @@ public List<Part> getMissingPartsByOrder(String numberorder) {
             }
         }
         return partAvailableOrder;
-    }
  */

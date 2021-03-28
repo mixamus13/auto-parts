@@ -2,34 +2,18 @@
 POST http://localhost:8888/orderid/
 Content-Type: application/json
 
-[
-  {
-    "numberorder": "556432",
-    "statusorder": false
-  },
-  {
-    "numberorder": "498000",
-    "statusorder": true
-  },
-  {
-    "numberorder": "123876",
-    "statusorder": false
-  },
-  {
-    "numberorder": "332211",
-    "statusorder": true
-  },
-  {
-    "numberorder": "983456",
-    "statusorder": true
-  },
-  {
-    "numberorder": "165798",
-    "statusorder": false
-  },
-  {
-    "numberorder": "556432",
-    "statusorder": true
-  }
-]
+{
+  "numberorder": "99999367888"
+}
 
+###
+POST http://localhost:8888/clients/
+Content-Type: application/json
+
+{
+  "username": "mixamus",
+  "firstname": "Max",
+  "lastname": "Dokuchaev",
+  "password": "qwerty13",
+  "phone": "89299205153"
+}

@@ -13,7 +13,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class ClientService {
 
-    final ClientDao clientDao;
+    private final ClientDao clientDao;
 
     public List<Client> getAllClients() {
         return clientDao.findAll();

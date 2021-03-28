@@ -2,7 +2,6 @@ package com.mixamus.autoparts.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -27,7 +26,10 @@ public class OrderID {
     private List<Part> part = new ArrayList<>();
 
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = { // если мы удалим OrderID, то каскадом не удалиться Client
+            CascadeType.DETACH, CascadeType.MERGE,
+            CascadeType.PERSIST, CascadeType.REFRESH
+    }, fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
     private Client client;
 }

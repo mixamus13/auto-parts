@@ -16,7 +16,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class PartsService {
 
-    final PartDao partDao;
+    private final PartDao partDao;
 
     public List<Part> getAllParts() {
         return partDao.findAll();
