@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class CheckOrderNumberService {
 
-    final OrderIDService orderIDService;
+    private final OrderIDService orderIDService;
 
     /**
      * Returns the parts of the order that are in stock.

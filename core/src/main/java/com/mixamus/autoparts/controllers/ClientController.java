@@ -14,7 +14,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class ClientController {
 
-    final ClientService clientService;
+    private final ClientService clientService;
 
     @GetMapping("/clients/")
     public List<Client> allClients() {

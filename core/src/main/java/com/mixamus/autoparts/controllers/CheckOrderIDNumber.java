@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class CheckOrderIDNumber {
 
-    final CheckOrderNumberService checkOrderNumberService;
+    private final CheckOrderNumberService checkOrderNumberService;
 
     @GetMapping("number/")
     public List<Part> getOrderByIdAvailablePart(@RequestParam String numberorder) {

@@ -13,7 +13,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.List;
 
-@SpringBootTest // <--- когда тестируем: service - businesses logic, не используем SpringBootTest
+@SpringBootTest(classes = ClientControllerTest.class) // <--- когда тестируем: service - businesses logic, не используем SpringBootTest
 @ExtendWith(MockitoExtension.class)
 class ClientControllerTest {
 

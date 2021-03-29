@@ -20,7 +20,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @AllArgsConstructor
 public class PartController {
 
-    final PartsService partsService;
+    private final PartsService partsService;
 
     /**
      * Get all parts.
