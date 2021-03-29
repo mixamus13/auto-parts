@@ -1,14 +1,14 @@
 package com.mixamus.autoparts.service;
 
 import com.mixamus.autoparts.domain.Part;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CheckOrderNumberService {
 
     private final OrderIDService orderIDService;

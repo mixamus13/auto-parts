@@ -4,13 +4,14 @@ import com.mixamus.autoparts.dao.ClientDao;
 import com.mixamus.autoparts.domain.Client;
 import com.mixamus.autoparts.dto.ClientDto;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ClientService {
 
     private final ClientDao clientDao;

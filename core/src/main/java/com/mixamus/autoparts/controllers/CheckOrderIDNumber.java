@@ -2,16 +2,17 @@ package com.mixamus.autoparts.controllers;
 
 import com.mixamus.autoparts.domain.Part;
 import com.mixamus.autoparts.service.CheckOrderNumberService;
-import com.mixamus.autoparts.service.OrderIDService;
-import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.*;
-import org.supercsv.cellprocessor.ParseInt;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("check/")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CheckOrderIDNumber {
 
     private final CheckOrderNumberService checkOrderNumberService;

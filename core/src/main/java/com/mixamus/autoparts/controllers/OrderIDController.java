@@ -3,7 +3,7 @@ package com.mixamus.autoparts.controllers;
 import com.mixamus.autoparts.domain.OrderID;
 import com.mixamus.autoparts.dto.OrderDto;
 import com.mixamus.autoparts.service.OrderIDService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class OrderIDController {
 
     private final OrderIDService orderIDService;

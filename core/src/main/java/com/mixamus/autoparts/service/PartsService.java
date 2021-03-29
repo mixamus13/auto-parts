@@ -1,11 +1,10 @@
 package com.mixamus.autoparts.service;
 
 import com.mixamus.autoparts.dao.PartDao;
-import com.mixamus.autoparts.domain.OrderID;
 import com.mixamus.autoparts.domain.Part;
 import com.mixamus.autoparts.dto.PartDtoV1;
 import com.mixamus.autoparts.dto.PartDtoV2;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.Optional;
 
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class PartsService {
 
     private final PartDao partDao;

@@ -5,7 +5,7 @@ import com.mixamus.autoparts.dto.PartDtoV1;
 import com.mixamus.autoparts.dto.PartDtoV2;
 import com.mixamus.autoparts.exceptions.PartNotFoundException;
 import com.mixamus.autoparts.service.PartsService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +17,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class PartController {
 
     private final PartsService partsService;

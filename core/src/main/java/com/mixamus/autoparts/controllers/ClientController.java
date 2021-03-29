@@ -3,7 +3,7 @@ package com.mixamus.autoparts.controllers;
 import com.mixamus.autoparts.domain.Client;
 import com.mixamus.autoparts.dto.ClientDto;
 import com.mixamus.autoparts.service.ClientService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ClientController {
 
     private final ClientService clientService;
