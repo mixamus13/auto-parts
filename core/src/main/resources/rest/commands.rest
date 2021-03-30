@@ -1,4 +1,5 @@
-###
+
+### ADD ORDERS
 POST http://localhost:8888/orderid/
 Content-Type: application/json
 
@@ -7,6 +8,19 @@ Content-Type: application/json
 }
 
 ###
+DELETE http://localhost:8888/orderid/8/
+Content-Type: application/json
+
+###
+PUT http://localhost:8888/orderid/10/
+Content-Type: application/json
+
+{
+  "numberorder": "33311111111"
+}
+
+
+### ADD CLIENT
 POST http://localhost:8888/clients/
 Content-Type: application/json
 
@@ -17,3 +31,48 @@ Content-Type: application/json
   "password": "qwerty13",
   "phone": "89299205153"
 }
+
+###
+PUT http://localhost:8888/clients/8/
+Content-Type: application/json
+
+{
+  "username": "dimono",
+  "firstname": "Dered",
+  "lastname": "Ser",
+  "password": "12345678",
+  "phone": "81234567878"
+}
+
+###
+DELETE http://localhost:8888/clients/8/
+Content-Type: application/json
+
+
+### ADD PART
+POST http://localhost:8888/parts/
+Content-Type: application/json
+
+{
+  "namepart": "Molokolo",
+  "vin": "7385845738",
+  "model": "OPOLO",
+  "year": 1111,
+  "availability": true
+}
+
+###
+PUT http://localhost:8888/parts/v2/9/
+Content-Type: application/json
+
+{
+  "namepart": "Stupista",
+  "vin": "WEQ42564787954",
+  "model": "Opel",
+  "year": 2009,
+  "availability": true
+}
+
+###
+DELETE http://localhost:8888/parts/8/
+Content-Type: application/json

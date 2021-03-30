@@ -21,7 +21,7 @@ public class CheckOrderNumberService {
      */
     public List<Part> getMissingPartsByOrder(String numberorder) {
         var parts = orderIDService.getOrderName(numberorder).getPart();
-        return parts.stream().filter(Part::isAvailability).collect(Collectors.toList());
+        return parts.stream().filter(p -> !p.isAvailability()).collect(Collectors.toList());
     }
 }
 
@@ -30,6 +30,12 @@ public class CheckOrderNumberService {
         получить все его Part (получить по Order Part(s)),
         проверить какие Part есть в наличии,
         вернуть Order с Part что есть в наличии.
+        =======================================
+        ==========    new task   ==============
+        =======================================
+        вернуть запчасти заказа которых нет в наличии
+        =======================================
+        сделать Enum IN_STOCK и в DB в таблице переделать
 */
 
 /*

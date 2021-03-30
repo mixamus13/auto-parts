@@ -72,7 +72,7 @@ public class PartController {
      * @param id        part.
      * @param partDtoV1 part's PartDtoV1.
      */
-    @PutMapping("/v1/parts/{id}")
+    @PutMapping("/parts/v1/{id}")
     public void updatePartById(@PathVariable int id, @RequestBody PartDtoV1 partDtoV1) {
         partsService.updatePartByIdV1(id, partDtoV1, partsService);
     }
@@ -83,7 +83,7 @@ public class PartController {
      * @param id        part.
      * @param partDtoV2 part's PartDtoV2.
      */
-    @PutMapping("/v2/parts/{id}")
+    @PutMapping("/parts/v2/{id}")
     public void updatePartById(@PathVariable int id, @RequestBody PartDtoV2 partDtoV2) {
         partsService.updatePartByIdV2(id, partDtoV2, partsService);
     }

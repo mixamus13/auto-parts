@@ -16,4 +16,6 @@ public class PartDtoV2 {
     String model;
 
     int year;
+
+    boolean availability;
 }

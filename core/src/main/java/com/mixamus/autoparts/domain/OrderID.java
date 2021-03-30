@@ -15,7 +15,7 @@ import java.util.List;
 public class OrderID {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     int id;
 
