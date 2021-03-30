@@ -61,7 +61,7 @@ public class PartsService {
         newPart.setVin(partDtoV2.getVin());
         newPart.setModel(partDtoV2.getModel());
         newPart.setYear(partDtoV2.getYear());
-        newPart.setAvailability(partDtoV2.isAvailability());
+        newPart.setAvailability(partDtoV2.getAvailability());
         partsService.updatePartById(newPart);
     }
 }

@@ -1,18 +1,18 @@
 -- PARTS:
 INSERT INTO part(namepart, vin, model, year, availability)
-VALUES ('Magnitola', 'JH4CL96878C525510', 'Ford', 1988, true);
+VALUES ('Magnitola', 'JH4CL96878C525510', 'Ford', 1988, 'IN_STOCK');
 INSERT INTO part(namepart, vin, model, year, availability)
-VALUES ('Koleso', 'G6AE1RXXF0846207', 'Audi', 2011, false);
+VALUES ('Koleso', 'G6AE1RXXF0846207', 'Audi', 2011, 'NON_STOCK');
 INSERT INTO part(namepart, vin, model, year, availability)
-VALUES ('Fara', 'WVWAA7AJ2CW263741', 'Jaguar', 1967, true);
+VALUES ('Fara', 'WVWAA7AJ2CW263741', 'Jaguar', 1967, 'IN_STOCK');
 INSERT INTO part(namepart, vin, model, year, availability)
-VALUES ('Motor', 'KNDMG4C71E6532505', 'Opel', 1999, true);
+VALUES ('Motor', 'KNDMG4C71E6532505', 'Opel', 1999, 'NON_STOCK');
 INSERT INTO part(namepart, vin, model, year, availability)
-VALUES ('Torpedo', 'WBADW3C56CE437448', 'Bmw', 2013, true);
+VALUES ('Torpedo', 'WBADW3C56CE437448', 'Bmw', 2013, 'IN_STOCK');
 INSERT INTO part(namepart, vin, model, year, availability)
-VALUES ('Zerkalo', 'YV1960ASXA1312354', 'Mercedes-Benz', 2019, true);
+VALUES ('Zerkalo', 'YV1960ASXA1312354', 'Mercedes-Benz', 2019, 'IN_STOCK');
 INSERT INTO part(namepart, vin, model, year, availability)
-VALUES ('Kapot', 'YV1960ASXA1322222', 'Saab', 1977, false);
+VALUES ('Kapot', 'YV1960ASXA1322222', 'Saab', 1977, 'NON_STOCK');
 
 
 -- Client:

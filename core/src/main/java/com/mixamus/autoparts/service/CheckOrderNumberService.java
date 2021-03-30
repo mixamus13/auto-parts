@@ -1,17 +1,19 @@
 package com.mixamus.autoparts.service;
 
 import com.mixamus.autoparts.domain.Part;
+import com.mixamus.autoparts.domain.StatusOrderID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class CheckOrderNumberService {
 
     private final OrderIDService orderIDService;
+    private StatusOrderID statusOrderID;
 
     /**
      * Returns the parts of the order that are in stock.
@@ -21,7 +23,13 @@ public class CheckOrderNumberService {
      */
     public List<Part> getMissingPartsByOrder(String numberorder) {
         var parts = orderIDService.getOrderName(numberorder).getPart();
-        return parts.stream().filter(p -> !p.isAvailability()).collect(Collectors.toList());
+        List<Part> list = new ArrayList<>();
+        for (Part p : parts) {
+            if (!p.getAvailability().equals("IN_STOCK")) {
+                list.add(p);
+            }
+        }
+        return list;
     }
 }
 

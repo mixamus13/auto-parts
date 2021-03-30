@@ -28,7 +28,7 @@ CREATE TABLE Part
     vin          VARCHAR(255)                        NOT NULL,
     model        VARCHAR(255)                        NOT NULL,
     year         INTEGER                             NOT NULL,
-    availability BOOLEAN                             NOT NULL,
+    availability VARCHAR(255)                        NOT NULL,
     PRIMARY KEY (id)
 );
 

@@ -17,5 +17,5 @@ public class PartDtoV2 {
 
     int year;
 
-    boolean availability;
+    String availability;
 }

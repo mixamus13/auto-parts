@@ -29,7 +29,7 @@ public class Part {
 
     //StatusOrderID statuspart;
 
-    boolean availability;
+    String availability;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "part", cascade = {

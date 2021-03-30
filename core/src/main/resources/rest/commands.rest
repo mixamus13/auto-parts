@@ -58,11 +58,11 @@ Content-Type: application/json
   "vin": "7385845738",
   "model": "OPOLO",
   "year": 1111,
-  "availability": true
+  "availability": "IN_STOCK"
 }
 
 ###
-PUT http://localhost:8888/parts/v2/9/
+PUT http://localhost:8888/parts/v2/8/
 Content-Type: application/json
 
 {
@@ -70,7 +70,7 @@ Content-Type: application/json
   "vin": "WEQ42564787954",
   "model": "Opel",
   "year": 2009,
-  "availability": true
+  "availability": "IN_STOCK"
 }
 
 ###
