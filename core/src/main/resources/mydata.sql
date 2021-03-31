@@ -47,3 +47,26 @@ INSERT INTO orderid (numberorder)
 VALUES ('21215668655');
 INSERT INTO orderid (numberorder)
 VALUES ('11111367888');
+
+
+
+-- CREATE TYPE AVAILABILITY AS ENUM ('IN_STOCK', 'NON_STOCK');
+
+CREATE TABLE Part
+(
+    id           BIGINT GENERATED ALWAYS AS IDENTITY NOT NULL,
+    namepart     VARCHAR(255)                        NOT NULL,
+    vin          VARCHAR(255)                        NOT NULL,
+    model        VARCHAR(255)                        NOT NULL,
+    year         INTEGER                             NOT NULL,
+    availability VARCHAR(9),
+    -- availability availability DEFAULT ('NON_STOCK')  NOT NULL,
+    PRIMARY KEY (id)
+);
+
+
+
+-- vladmihalcea was very good
+-- https://vladmihalcea.com/the-best-way-to-map-an-enum-type-with-jpa-and-hibernate/
+
+CREATE TYPE availability AS ENUM ('IN_STOCK', 'NON_STOCK')

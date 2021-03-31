@@ -5,8 +5,8 @@ import com.mixamus.autoparts.domain.StatusOrderID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -23,13 +23,7 @@ public class CheckOrderNumberService {
      */
     public List<Part> getMissingPartsByOrder(String numberorder) {
         var parts = orderIDService.getOrderName(numberorder).getPart();
-        List<Part> list = new ArrayList<>();
-        for (Part p : parts) {
-            if (!p.getAvailability().equals("IN_STOCK")) {
-                list.add(p);
-            }
-        }
-        return list;
+        return parts.stream().filter(p -> p.getAvailability().equals(StatusOrderID.NON_STOCK)).collect(Collectors.toList());
     }
 }
 
@@ -38,24 +32,19 @@ public class CheckOrderNumberService {
         получить все его Part (получить по Order Part(s)),
         проверить какие Part есть в наличии,
         вернуть Order с Part что есть в наличии.
-        =======================================
-        ==========    new task   ==============
-        =======================================
-        вернуть запчасти заказа которых нет в наличии
-        =======================================
-        сделать Enum IN_STOCK и в DB в таблице переделать
+
 */
 
 /*
 var parts = orderIDService.getOrderName(numberorder).getPart();
 return parts.stream().filter(Part::isAvailability).collect(Collectors.toList());
 
-List<Part> partAvailableOrder = new ArrayList<>();
-        var parts = orderIDService.getOrderName(numberorder).getPart();
+var parts = orderIDService.getOrderName(numberorder).getPart();
+        List<Part> list = new ArrayList<>();
         for (Part p : parts) {
-            if (p.isAvailability()) {
-                partAvailableOrder.add(p);
+            if (!p.getAvailability().equals("IN_STOCK")) {
+                list.add(p);
             }
         }
-        return partAvailableOrder;
+        return list;
  */

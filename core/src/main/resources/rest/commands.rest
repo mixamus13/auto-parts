@@ -54,10 +54,10 @@ POST http://localhost:8888/parts/
 Content-Type: application/json
 
 {
-  "namepart": "Molokolo",
-  "vin": "7385845738",
-  "model": "OPOLO",
-  "year": 1111,
+  "namepart": "Dno",
+  "vin": "YV1960ASX44444444",
+  "model": "BMV",
+  "year": 2013,
   "availability": "IN_STOCK"
 }
 
@@ -70,9 +70,9 @@ Content-Type: application/json
   "vin": "WEQ42564787954",
   "model": "Opel",
   "year": 2009,
-  "availability": "IN_STOCK"
+  "availability": "NON_STOCK"
 }
 
 ###
-DELETE http://localhost:8888/parts/8/
+DELETE http://localhost:8888/parts/7/
 Content-Type: application/json

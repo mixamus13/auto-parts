@@ -28,15 +28,9 @@ CREATE TABLE Part
     vin          VARCHAR(255)                        NOT NULL,
     model        VARCHAR(255)                        NOT NULL,
     year         INTEGER                             NOT NULL,
-    availability VARCHAR(255)                        NOT NULL,
+    availability availability DEFAULT ('NON_STOCK')  NOT NULL,
     PRIMARY KEY (id)
 );
-
-
--- TABLE: client_order @ManyToOne
--- ALTER TABLE OrderID
---     ADD CONSTRAINT client_id__fk
---         FOREIGN KEY (client_id) REFERENCES Client;
 
 -- TABLE: client_order @OneToMany <---> @ManyToOne
 ALTER TABLE OrderID
@@ -55,9 +49,6 @@ CREATE TABLE orderid_part
     part_id    BIGINT NOT NULL
 );
 
--- ALTER TABLE OrderID
---     ADD CONSTRAINT orderid__unique
---         UNIQUE (numberorder);
 
 ALTER TABLE orderid_part
     ADD CONSTRAINT orderid_part__part_fk
