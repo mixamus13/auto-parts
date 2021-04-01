@@ -4,6 +4,7 @@ import com.mixamus.autoparts.dao.ClientDao;
 import com.mixamus.autoparts.domain.Client;
 import com.mixamus.autoparts.dto.ClientDto;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
