@@ -1,6 +1,7 @@
 package com.mixamus.autoparts.exceptions;
 
 public class ExceptionRepository extends Exception {
+
     public ExceptionRepository() {
         super();
     }

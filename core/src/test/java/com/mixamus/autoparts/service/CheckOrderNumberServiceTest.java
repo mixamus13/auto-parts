@@ -4,8 +4,9 @@ import com.mixamus.autoparts.domain.OrderID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+
+import static org.mockito.Mockito.when;
 
 public class CheckOrderNumberServiceTest {
 
@@ -27,9 +28,12 @@ public class CheckOrderNumberServiceTest {
 
     @Test
     void itWorksWithOrder() {
-        Mockito.when(orderIDService.getOrderName("11134466775")).thenReturn(new OrderID());
+        when(orderIDService.getOrderName("11134466775"))
+                .thenReturn(new OrderID());
+
         it.getMissingPartsByOrder("11134466775");
     }
 
-    // все в наличие, какие не в наличии,
 }
+
+// протестировать Part in Order все в наличие, какие не в наличии,

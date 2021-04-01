@@ -5,6 +5,7 @@ import com.mixamus.autoparts.dto.ClientDto;
 import com.mixamus.autoparts.service.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
