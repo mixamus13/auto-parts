@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -18,7 +19,7 @@ public class CheckOrderIDNumber {
     private final CheckOrderNumberService checkOrderNumberService;
 
     @GetMapping("number/")
-    public List<Part> getOrderByIdAvailablePart(@RequestParam String numberorder) {
+    public List<Part> getOrderByIdAvailablePart(@Valid @RequestParam String numberorder) {
         return checkOrderNumberService.getMissingPartsByOrder(numberorder);
     }
 }

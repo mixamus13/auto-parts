@@ -1,38 +1,41 @@
 package com.mixamus.autoparts.service;
 
 import com.mixamus.autoparts.domain.OrderID;
-import org.junit.jupiter.api.BeforeEach;
+import com.mixamus.autoparts.domain.Part;
+import com.mixamus.autoparts.domain.StatusOrderID;
+import com.mixamus.autoparts.exceptions.OrderIDNotFoundException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import static org.mockito.Mockito.when;
-import static org.mockito.MockitoAnnotations.openMocks;
 
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.*;
+
+@DisplayName("Check ordernumber service")
 @ExtendWith(MockitoExtension.class)
 public class CheckOrderNumberServiceTest {
 
-    @Mock
+    @InjectMocks
     private CheckOrderNumberService it;
 
     @Mock
-//    @InjectMocks
     private OrderIDService orderIDService;
 
     @Mock
     private PartsService partsService;
 
-    @BeforeEach
-    public void setUp() {
-        openMocks(this);
-        it = new CheckOrderNumberService(orderIDService);
-    }
-
-    @DisplayName("Get order with NULL")
+    @DisplayName("Namberorder is NULL")
     @Test
-    void itWorksWithOrderNull() {
-        it.getMissingPartsByOrder("123");
+    void itNumberorderWithOrderNull() {
+        assertThat(it.getMissingPartsByOrder("")).isNull();
+
     }
 
     @DisplayName("Get order which not empty")
@@ -47,30 +50,38 @@ public class CheckOrderNumberServiceTest {
     @DisplayName("Parts is not available in the Order")
     @Test
     void partsIsNotAvailableOrder() {
-        when(it.getMissingPartsByOrder("11111367888"))
-                .thenReturn(partsService.getAllParts()).thenThrow();
+        OrderID orderID = new OrderID();
+        Part part = new Part();
+        part.setAvailability(StatusOrderID.NON_STOCK);
+        orderID.setPart(List.of(part));
+        when(orderIDService.getOrderName("11111367888"))
+                .thenReturn(orderID);
+
+        List<Part> actual = it.getMissingPartsByOrder("11111367888");
+
+        assertThat(actual.size()).isEqualTo(1);
     }
 
     @DisplayName("Get order with Throws")
     @Test
     void itThrowsOnException() {
 
-       // Exception exception = assertThrows();
+        when(orderIDService.getOrderName("131313"))
+                .thenThrow(new OrderIDNotFoundException("13"));
 
-//        when(orderIDService.getOrderName("123"))
-//                .thenThrow(new RuntimeException());
-//
-//        it.getMissingPartsByOrder("1423");
+        assertThrows(OrderIDNotFoundException.class, () -> it.getMissingPartsByOrder("131313"));
+
     }
 
-    @DisplayName("Get order with Throws")
+    @DisplayName("Get pass by order")
     @Test
-    void it() {
+    void shouldGetPassByOrderId() {
         OrderID orderID = new OrderID();
+        when(orderIDService.getOrderName("666666666"))
+                .thenReturn(orderID);
+        List<Part> actual = it.getMissingPartsByOrder("666666666");
 
-
-        it.getMissingPartsByOrder("123");
+        assertNotNull(actual);
+        verify(orderIDService, times(1)).getOrderName("666666666");
     }
 }
-
-// протестировать Part in Order все в наличие, какие не в наличии,

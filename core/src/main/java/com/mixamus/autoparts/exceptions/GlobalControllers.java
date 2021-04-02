@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalControllers {
 
-    @ExceptionHandler
-    public ResponseEntity<String> onError(Exception e) {
-        return ResponseEntity.ok("not good!");
-    }
+//    @ExceptionHandler
+//    public ResponseEntity<String> onError(Exception e) {
+//        return ResponseEntity.ok("not good!");
+//    }
 }

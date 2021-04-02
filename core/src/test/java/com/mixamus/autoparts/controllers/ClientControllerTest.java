@@ -16,9 +16,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.List;
 
-//@SpringBootTest(classes = ClientControllerTest.class) // <--- когда тестируем: service - businesses logic, не используем SpringBootTest
-//@ExtendWith(MockitoExtension.class)
-@DataJpaTest
+@SpringBootTest(classes = ClientControllerTest.class) // <--- когда тестируем: service - businesses logic, не используем SpringBootTest
+@ExtendWith(MockitoExtension.class)
+//@DataJpaTest
 class ClientControllerTest {
 
     // этот бин Создастся моком и он заменит в контексте реальный бин

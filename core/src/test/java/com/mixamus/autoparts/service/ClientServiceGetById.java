@@ -1,6 +1,6 @@
 package com.mixamus.autoparts.service;
 
-import com.mixamus.autoparts.domain.Client;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,13 +10,21 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.MockitoAnnotations.openMocks;
 
 @DisplayName("Client service get by Id")
-@ExtendWith(MockitoExtension.class)
+@ExtendWith(MockitoExtension.class) // (1) Сообщает Mockito о создании макетов на основе аннотации @Mock.
 class ClientServiceGetById {
 
-    @Mock
+    @Mock  // Сообщает Mockito mock над экземпляром clientService
     private ClientService clientService;
+
+    @BeforeEach
+    void setUp() {
+        openMocks(clientService);
+    }
 
     @DisplayName("Check client by ID is null")
     @Test
@@ -33,15 +41,15 @@ class ClientServiceGetById {
     @Test
     @DisplayName("Get client is incorrect param")
     void shouldClientIncorrectParam() {
-        assertEquals(Optional.empty(), clientService.getClientById(123));
+
+        var id = clientService.getClientById(13);
+        assertNotEquals(13, id);
     }
 
     @Test
-    @DisplayName("Get client is correct param")
-    void shouldClientHappyPass() {
-        Client client = new Client();
-        client.setId(13);
+    @DisplayName("Get client is once time")
+    void shouldClientOnceTime() {
 
-        assertEquals(13, client.getId());
+        verify(clientService, times(1)).getClientById(12);
     }
 }

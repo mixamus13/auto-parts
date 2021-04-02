@@ -13,7 +13,6 @@ import java.util.stream.Collectors;
 public class CheckOrderNumberService {
 
     private final OrderIDService orderIDService;
-    private StatusOrderID statusOrderID;
 
     /**
      * Returns the parts of the order that are in stock.
@@ -22,8 +21,14 @@ public class CheckOrderNumberService {
      * @return parts is available.
      */
     public List<Part> getMissingPartsByOrder(String numberorder) {
-        var parts = orderIDService.getOrderName(numberorder).getPart();
-        return parts.stream().filter(p -> p.getAvailability().equals(StatusOrderID.NON_STOCK)).collect(Collectors.toList());
+        var orderName = orderIDService.getOrderName(numberorder);
+        if (orderName == null) {
+            return null;
+        }
+        var parts = orderName.getPart();
+        return parts.stream()
+                .filter(p -> p.getAvailability().equals(StatusOrderID.NON_STOCK))
+                .collect(Collectors.toList());
     }
 }
 
@@ -36,8 +41,12 @@ public class CheckOrderNumberService {
 */
 
 /*
-var parts = orderIDService.getOrderName(numberorder).getPart();
-return parts.stream().filter(Part::isAvailability).collect(Collectors.toList());
+OrderID orderName = orderIDService.getOrderName(numberorder);
+        if (orderName == null) {
+            return null;
+        }
+var parts = orderName.getPart();
+return parts.stream().filter(p -> p.getAvailability().equals(StatusOrderID.NON_STOCK)).collect(Collectors.toList());
 
 var parts = orderIDService.getOrderName(numberorder).getPart();
         List<Part> list = new ArrayList<>();
