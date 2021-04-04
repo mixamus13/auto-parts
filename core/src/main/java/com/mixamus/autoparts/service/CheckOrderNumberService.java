@@ -21,14 +21,11 @@ public class CheckOrderNumberService {
      * @return parts is available.
      */
     public List<Part> getMissingPartsByOrder(String numberorder) {
-        var orderName = orderIDService.getOrderName(numberorder);
-        if (orderName == null) {
+        if (numberorder != null) {
             return null;
         }
-        var parts = orderName.getPart();
-        return parts.stream()
-                .filter(p -> p.getAvailability().equals(StatusOrderID.NON_STOCK))
-                .collect(Collectors.toList());
+        var parts = orderIDService.getOrderName(numberorder).getPart();
+        return parts.stream().filter(p -> !p.getAvailability().equals(StatusOrderID.NON_STOCK)).collect(Collectors.toList());
     }
 }
 
@@ -51,7 +48,7 @@ return parts.stream().filter(p -> p.getAvailability().equals(StatusOrderID.NON_S
 var parts = orderIDService.getOrderName(numberorder).getPart();
         List<Part> list = new ArrayList<>();
         for (Part p : parts) {
-            if (!p.getAvailability().equals("IN_STOCK")) {
+            if (!p.getAvailability().equals(StatusOrderID.NON_STOCK)) {
                 list.add(p);
             }
         }
