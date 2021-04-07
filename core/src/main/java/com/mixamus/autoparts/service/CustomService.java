@@ -16,4 +16,8 @@ public class CustomService {
     public List<Part> getCustomParts() {
         return customDao.getCustomParts();
     }
+
+    public Part getPartById(int id) {
+        return customDao.getPartById(id);
+    }
 }

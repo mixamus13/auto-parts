@@ -28,6 +28,27 @@ spring:
     schemas: public
     enabled: true
 
+  kafka:
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      #      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      #        properties:
+      #          spring:
+      #            json:
+      #              type:
+      #                mapping: test-topic:vis.vis_sse.ui.mvc.KafkaMessage
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+#      properties:
+#        spring:
+#          json:
+#            type:
+#              mapping: test-topic:vis.vis_sse.ui.mvc.KafkaMessage
+
 #Debug
 debug: false
 

@@ -1,5 +1,6 @@
 package com.mixamus.autoparts.service;
 
+import com.mixamus.autoparts.domain.OrderID;
 import com.mixamus.autoparts.domain.Part;
 import com.mixamus.autoparts.domain.StatusOrderID;
 import lombok.RequiredArgsConstructor;
@@ -21,11 +22,12 @@ public class CheckOrderNumberService {
      * @return parts is available.
      */
     public List<Part> getMissingPartsByOrder(String numberorder) {
-        if (numberorder != null) {
+        OrderID orderName = orderIDService.getOrderName(numberorder);
+        if (orderName == null) {
             return null;
         }
-        var parts = orderIDService.getOrderName(numberorder).getPart();
-        return parts.stream().filter(p -> !p.getAvailability().equals(StatusOrderID.NON_STOCK)).collect(Collectors.toList());
+        var parts = orderName.getPart();
+        return parts.stream().filter(p -> p.getAvailability().equals(StatusOrderID.NON_STOCK)).collect(Collectors.toList());
     }
 }
 
@@ -36,7 +38,6 @@ public class CheckOrderNumberService {
         вернуть Order с Part что есть в наличии.
 
 */
-
 /*
 OrderID orderName = orderIDService.getOrderName(numberorder);
         if (orderName == null) {

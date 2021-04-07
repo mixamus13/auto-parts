@@ -46,6 +46,15 @@ public class Part {
             CascadeType.PERSIST, CascadeType.REFRESH
     })
     private List<OrderID> orderID = new ArrayList<>();
+
+    public Part(int id, String namepart, String vin, String model, int year, String availability) {
+        this.id = id;
+        this.namepart = namepart;
+        this.vin = vin;
+        this.model = model;
+        this.year = year;
+        this.availability = StatusOrderID.valueOf(availability);
+    }
 }
 /*
     Аннотация @JoinColumn указывает на столбец, который осуществляет связь с другим объектом.

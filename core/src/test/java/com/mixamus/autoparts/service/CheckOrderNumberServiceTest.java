@@ -47,7 +47,7 @@ public class CheckOrderNumberServiceTest {
         it.getMissingPartsByOrder("123");
     }
 
-    @DisplayName("Parts is not available in the Order")
+    @DisplayName("It finds not available parts")
     @Test
     void partsIsNotAvailableOrder() {
         OrderID orderID = new OrderID();
@@ -70,7 +70,6 @@ public class CheckOrderNumberServiceTest {
                 .thenThrow(new OrderIDNotFoundException("13"));
 
         assertThrows(OrderIDNotFoundException.class, () -> it.getMissingPartsByOrder("131313"));
-
     }
 
     @DisplayName("Get pass by order")
@@ -83,5 +82,20 @@ public class CheckOrderNumberServiceTest {
 
         assertNotNull(actual);
         verify(orderIDService, times(1)).getOrderName("666666666");
+    }
+
+    @DisplayName("It returns empty array when all parts in stock")
+    @Test
+    void returnEmptyArrayWhenPartsStock() {
+        OrderID orderID = new OrderID();
+        Part part = new Part();
+        part.setAvailability(StatusOrderID.IN_STOCK);
+        orderID.setPart(List.of(part));
+        when(orderIDService.getOrderName("11111367888"))
+                .thenReturn(orderID);
+
+        List<Part> actual = it.getMissingPartsByOrder("11111367888");
+
+        assertThat(actual.size()).isEqualTo(0);
     }
 }
