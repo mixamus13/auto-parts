@@ -11,12 +11,12 @@ import javax.persistence.Column;
 @ToString
 public class PartDtoV1 {
 
-    @Column(name = "namepart")
-    String namepart;
+  @Column(name = "namepart")
+  String namepart;
 
-    @Column(name = "vin")
-    String vin;
+  @Column(name = "vin")
+  String vin;
 
-    @Column(name = "year")
-    int year;
+  @Column(name = "year")
+  int year;
 }

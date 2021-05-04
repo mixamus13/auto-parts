@@ -9,13 +9,9 @@ import lombok.*;
 @ToString
 public class ClientDto {
 
-    String username;
-
-    String firstname;
-
-    String lastname;
-
-    String password;
-
-    String phone;
+  String username;
+  String firstname;
+  String lastname;
+  String password;
+  String phone;
 }

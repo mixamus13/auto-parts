@@ -13,45 +13,21 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CheckOrderNumberService {
 
-    private final OrderIDService orderIDService;
+  private final OrderIDService orderIDService;
 
-    /**
-     * Returns the parts of the order that are in stock.
-     *
-     * @param numberorder number order.
-     * @return parts is available.
-     */
-    public List<Part> getMissingPartsByOrder(String numberorder) {
-        OrderID orderName = orderIDService.getOrderName(numberorder);
-        if (orderName == null) {
-            return null;
-        }
-        var parts = orderName.getPart();
-        return parts.stream().filter(p -> p.getAvailability().equals(StatusOrderID.NON_STOCK)).collect(Collectors.toList());
+  /**
+   * Returns the parts of the order that are in stock.
+   *
+   * @param numberorder number order.
+   * @return parts is available.
+   */
+  public List<Part> getMissingPartsByOrder(String numberorder) {
+    OrderID orderName = orderIDService.getOrderName(numberorder);
+    if (orderName == null) {
+      return null;
     }
+    var parts = orderName.getPart();
+    return parts.stream().filter(p -> p.getAvailability().equals(StatusOrderID.NON_STOCK))
+      .collect(Collectors.toList());
+  }
 }
-
-/*
-        Получить Order,
-        получить все его Part (получить по Order Part(s)),
-        проверить какие Part есть в наличии,
-        вернуть Order с Part что есть в наличии.
-
-*/
-/*
-OrderID orderName = orderIDService.getOrderName(numberorder);
-        if (orderName == null) {
-            return null;
-        }
-var parts = orderName.getPart();
-return parts.stream().filter(p -> p.getAvailability().equals(StatusOrderID.NON_STOCK)).collect(Collectors.toList());
-
-var parts = orderIDService.getOrderName(numberorder).getPart();
-        List<Part> list = new ArrayList<>();
-        for (Part p : parts) {
-            if (!p.getAvailability().equals(StatusOrderID.NON_STOCK)) {
-                list.add(p);
-            }
-        }
-        return list;
- */

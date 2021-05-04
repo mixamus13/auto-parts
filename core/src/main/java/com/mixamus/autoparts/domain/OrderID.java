@@ -14,22 +14,20 @@ import java.util.List;
 @Entity
 public class OrderID {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Include
-    int id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @EqualsAndHashCode.Include
+  int id;
 
-    String numberorder;
+  String numberorder;
 
-    @JsonIgnore
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<Part> part = new ArrayList<>();
+  @JsonIgnore
+  @ManyToMany(cascade = CascadeType.ALL)
+  private List<Part> part = new ArrayList<>();
 
-    @JsonIgnore
-    @ManyToOne(cascade = { // если мы удалим OrderID, то каскадом не удалиться Client
-            CascadeType.DETACH, CascadeType.MERGE,
-            CascadeType.PERSIST, CascadeType.REFRESH
-    }, fetch = FetchType.LAZY)
-    @JoinColumn(name = "client_id")
-    private Client client;
+  @JsonIgnore
+  @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+    fetch = FetchType.LAZY)
+  @JoinColumn(name = "client_id")
+  private Client client;
 }

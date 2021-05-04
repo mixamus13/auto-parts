@@ -9,7 +9,6 @@ import lombok.*;
 @ToString
 public class OrderDto {
 
-    String numberOrder;
-
-    boolean statusOrder;
+  String numberOrder;
+  boolean statusOrder;
 }

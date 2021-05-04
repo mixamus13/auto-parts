@@ -115,9 +115,9 @@ public class WriteCsvInMap {
 
   public static void csvReader(Reader reader) throws IOException {
     Iterator<Map<String, String>> iterator = new CsvMapper()
-        .readerFor(Map.class)
-        .with(CsvSchema.emptySchema().withHeader())
-        .readValues(reader);
+      .readerFor(Map.class)
+      .with(CsvSchema.emptySchema().withHeader())
+      .readValues(reader);
     while (iterator.hasNext()) {
       Map<String, String> keyVals = iterator.next();
       System.out.println("Mapa: " + keyVals);

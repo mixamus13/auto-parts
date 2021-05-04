@@ -9,6 +9,12 @@ spring:
     username: postgres
     password: postgres
 
+#  data:
+#    mongodb:
+#      username:
+#      password:
+#      port:
+
   security:
     user:
       name: mixamus

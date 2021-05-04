@@ -18,47 +18,32 @@ import java.util.List;
 @TypeDef(name = "pgsql_enum", typeClass = PostgreSQLEnumType.class)
 public class Part {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Include
-    int id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @EqualsAndHashCode.Include
+  int id;
+  String namepart;
+  String vin;
+  String model;
+  int year;
 
-    @Column(name = "namepart")
-    String namepart;
+  @Enumerated(EnumType.STRING)
+  @Column(name = "availability")
+  @Type(type = "pgsql_enum")
+  StatusOrderID availability;
 
-    @Column(name = "vin")
-    String vin;
+  @JsonIgnore
+  @ManyToMany(mappedBy = "part", cascade = {CascadeType.DETACH, CascadeType.MERGE,
+    CascadeType.PERSIST, CascadeType.REFRESH
+  })
+  private List<OrderID> orderID = new ArrayList<>();
 
-    @Column(name = "model")
-    String model;
-
-    @Column(name = "year")
-    int year;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "availability")
-    @Type(type = "pgsql_enum")
-    StatusOrderID availability;
-
-    @JsonIgnore
-    @ManyToMany(mappedBy = "part", cascade = {
-            CascadeType.DETACH, CascadeType.MERGE,
-            CascadeType.PERSIST, CascadeType.REFRESH
-    })
-    private List<OrderID> orderID = new ArrayList<>();
-
-    public Part(int id, String namepart, String vin, String model, int year, String availability) {
-        this.id = id;
-        this.namepart = namepart;
-        this.vin = vin;
-        this.model = model;
-        this.year = year;
-        this.availability = StatusOrderID.valueOf(availability);
-    }
+  public Part(int id, String namepart, String vin, String model, int year, String availability) {
+    this.id = id;
+    this.namepart = namepart;
+    this.vin = vin;
+    this.model = model;
+    this.year = year;
+    this.availability = StatusOrderID.valueOf(availability);
+  }
 }
-/*
-    Аннотация @JoinColumn указывает на столбец, который осуществляет связь с другим объектом.
-
-    Cascade операций – это выполнение операции не только для Entity, на котором операция вызывается,
-    но и на связанных с ним Entity
- */

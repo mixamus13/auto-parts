@@ -20,102 +20,76 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RequiredArgsConstructor
 public class PartController {
 
-    private final PartsService partsService;
+  private final PartsService partsService;
 
-    /**
-     * Get all parts.
-     *
-     * @return all parts.
-     */
-    @GetMapping("/parts/")
-    public List<Part> getAllParts() {
-        return partsService.getAllParts();
-    }
+  @GetMapping("/parts/")
+  public List<Part> getAllParts() {
+    return partsService.getAllParts();
+  }
 
-    /**
-     * Get part from id Hateoas.
-     *
-     * @param id number of part.
-     * @return part with all data.
-     */
-    @GetMapping("/parts/hat/{id}")
-    EntityModel<Part> getPartByIdHateoas(@PathVariable int id) {
+  /**
+   * Get part from id Hateoas.
+   *
+   * @param id number of part.
+   * @return part with all data.
+   */
+  @GetMapping("/parts/hat/{id}")
+  EntityModel<Part> getPartByIdHateoas(@PathVariable int id) {
 
-        Part part = partsService.getPartById(id) //
-                .orElseThrow(() -> new PartNotFoundException(id));
+    Part part = partsService.getPartById(id)
+      .orElseThrow(() -> new PartNotFoundException(id));
 
-        return EntityModel.of(part,
-                linkTo(methodOn(PartController.class).getPartById(id)).withSelfRel(),
-                linkTo(methodOn(PartController.class).getAllParts()).withRel("parts"));
-    }
+    return EntityModel.of(part,
+      linkTo(methodOn(PartController.class).getPartById(id)).withSelfRel(),
+      linkTo(methodOn(PartController.class).getAllParts()).withRel("parts"));
+  }
 
-    @GetMapping("/parts/{id}")
-    public Optional<Part> getPartById(@PathVariable int id) {
-        return partsService.getPartById(id);
-    }
+  @GetMapping("/parts/{id}")
+  public Optional<Part> getPartById(@PathVariable int id) {
+    return partsService.getPartById(id);
+  }
 
-    /**
-     * Create new part.
-     *
-     * @param part part.
-     * @return new part.
-     */
-    @PostMapping("/parts/")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Part createPart(@RequestBody Part part) {
-        return partsService.createPart(part);
-    }
+  @PostMapping("/parts/")
+  @ResponseStatus(HttpStatus.CREATED)
+  public Part createPart(@RequestBody Part part) {
+    return partsService.createPart(part);
+  }
 
-    /**
-     * Update part by id V1.
-     *
-     * @param id        part.
-     * @param partDtoV1 part's PartDtoV1.
-     */
-    @PutMapping("/parts/v1/{id}")
-    public void updatePartById(@PathVariable int id, @RequestBody PartDtoV1 partDtoV1) {
-        partsService.updatePartByIdV1(id, partDtoV1, partsService);
-    }
+  /**
+   * Update part by id V1.
+   *
+   * @param id        part.
+   * @param partDtoV1 part's PartDtoV1.
+   */
+  @PutMapping("/parts/v1/{id}")
+  public void updatePartById(@PathVariable int id, @RequestBody PartDtoV1 partDtoV1) {
+    partsService.updatePartByIdV1(id, partDtoV1, partsService);
+  }
 
-    /**
-     * Update part by id V1.
-     *
-     * @param id        part.
-     * @param partDtoV2 part's PartDtoV2.
-     */
-    @PutMapping("/parts/v2/{id}")
-    public void updatePartById(@PathVariable int id, @RequestBody PartDtoV2 partDtoV2) {
-        partsService.updatePartByIdV2(id, partDtoV2, partsService);
-    }
+  /**
+   * Update part by id V1.
+   *
+   * @param id        part.
+   * @param partDtoV2 part's PartDtoV2.
+   */
+  @PutMapping("/parts/v2/{id}")
+  public void updatePartById(@PathVariable int id, @RequestBody PartDtoV2 partDtoV2) {
+    partsService.updatePartByIdV2(id, partDtoV2, partsService);
+  }
 
-    /**
-     * Delete part by id.
-     *
-     * @param id when to need delete Entity.
-     */
-    @DeleteMapping("/parts/{id}")
-    public void deletePartById(@PathVariable int id) {
-        partsService.deleteById(id);
-    }
+  @DeleteMapping("/parts/{id}")
+  public void deletePartById(@PathVariable int id) {
+    partsService.deleteById(id);
+  }
 
-    /**
-     * Find part by status.
-     *
-     * @param namePart status.
-     * @return status for part.
-     */
-    @GetMapping("/parts/find{namePart}")
-    public boolean findPartByStatus(@PathVariable String namePart) {
-        return partsService.findPartByStatus(namePart);
-    }
 
-    /**
-     * Upload image by by name.
-     *
-     * @param namePart upload image.
-     */
-    @PostMapping("/parts/{namePart}/uploadImage")
-    public void uploadImage(@PathVariable String namePart) {
-        partsService.uploadImage(namePart);
-    }
+  @GetMapping("/parts/find{namePart}")
+  public boolean findPartByStatus(@PathVariable String namePart) {
+    return partsService.findPartByStatus(namePart);
+  }
+
+  @PostMapping("/parts/{namePart}/uploadImage")
+  public void uploadImage(@PathVariable String namePart) {
+    partsService.uploadImage(namePart);
+  }
 }

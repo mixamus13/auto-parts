@@ -11,23 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserResource {
 
-    private final KafkaTemplate<String, ClientDto> kafkaTemplate;
+  private final KafkaTemplate<String, ClientDto> kafkaTemplate;
+  public static final String TOPIC_NAME = "kafka_example";
 
-    public static final String TOPIC_NAME = "kafka_example";
+  @GetMapping("kafka/{message}")
+  public String getPostString(@PathVariable("message") final String message) {
+    return "Published successfully";
+  }
 
-    @GetMapping("kafka/{message}")
-    public String getPostString(@PathVariable("message") final String message) {
-
-        //kafkaTemplate.send(TOPIC, message);
-
-        return "Published successfully";
-    }
-
-    @GetMapping("kafka/json/{client}")
-    public String getPostJson(@PathVariable("client") final String client) {
-
-        kafkaTemplate.send(TOPIC_NAME, new ClientDto(client, "Max", "Dok", "qwerty13", "+19991311313"));
-
-        return "Published successfully";
-    }
+  @GetMapping("kafka/json/{client}")
+  public String getPostJson(@PathVariable("client") final String client) {
+    kafkaTemplate.send(TOPIC_NAME, new ClientDto(client,
+      "Max", "Dok", "qwerty13", "+19991311313"));
+    return "Published successfully";
+  }
 }

@@ -3,10 +3,6 @@ package com.mixamus.autoparts.dto;
 import com.mixamus.autoparts.domain.StatusOrderID;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
@@ -14,13 +10,9 @@ import javax.persistence.Enumerated;
 @ToString
 public class PartDtoV2 {
 
-    String namepart;
-
-    String vin;
-
-    String model;
-
-    int year;
-
-    StatusOrderID availability;
+  String namepart;
+  String vin;
+  String model;
+  int year;
+  StatusOrderID availability;
 }

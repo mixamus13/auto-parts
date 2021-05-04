@@ -14,40 +14,39 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class OrderIDController {
 
-    private final OrderIDService orderIDService;
+  private final OrderIDService orderIDService;
 
-    @GetMapping("/orderid/")
-    public List<OrderID> getAllOrder() {
-        return orderIDService.getAllOrder();
-    }
+  @GetMapping("/orderid/")
+  public List<OrderID> getAllOrder() {
+    return orderIDService.getAllOrder();
+  }
 
-    @GetMapping("/orderid/{id}")
-    public Optional<OrderID> getOrderById(@PathVariable int id) {
-        return orderIDService.getOrderById(id);
-    }
+  @GetMapping("/orderid/{id}")
+  public Optional<OrderID> getOrderById(@PathVariable int id) {
+    return orderIDService.getOrderById(id);
+  }
 
-    @GetMapping("/orderid/numberorder/{numberOrder}")
-    public OrderDto getOrderByNumberorder(@PathVariable String numberOrder) {
-        OrderID domainOrder = orderIDService.getOrderName(numberOrder);
-        OrderDto orderDto = new OrderDto();
-        orderDto.setNumberOrder(domainOrder.getNumberorder());
-        return orderDto;
-    }
+  @GetMapping("/orderid/numberorder/{numberOrder}")
+  public OrderDto getOrderByNumberorder(@PathVariable String numberOrder) {
+    OrderID domainOrder = orderIDService.getOrderName(numberOrder);
+    OrderDto orderDto = new OrderDto();
+    orderDto.setNumberOrder(domainOrder.getNumberorder());
+    return orderDto;
+  }
 
-    @PostMapping("/orderid/")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void createNewOrder(@RequestBody OrderID orderID) {
-        orderIDService.createNewOrder(orderID);
-    }
+  @PostMapping("/orderid/")
+  @ResponseStatus(HttpStatus.CREATED)
+  public void createNewOrder(@RequestBody OrderID orderID) {
+    orderIDService.createNewOrder(orderID);
+  }
 
-    @PutMapping("/orderid/{id}")
-    public void updateOrder(@PathVariable int id,
-                            @RequestBody OrderID orderID) {
-        OrderIDService.updateOrderId(id, orderID, orderIDService);
-    }
+  @PutMapping("/orderid/{id}")
+  public void updateOrder(@PathVariable int id, @RequestBody OrderID orderID) {
+    OrderIDService.updateOrderId(id, orderID, orderIDService);
+  }
 
-    @DeleteMapping("/orderid/{id}")
-    public void deleteByNumberOrder(@PathVariable int id) {
-        orderIDService.delete(id);
-    }
+  @DeleteMapping("/orderid/{id}")
+  public void deleteByNumberOrder(@PathVariable int id) {
+    orderIDService.delete(id);
+  }
 }

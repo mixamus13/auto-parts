@@ -12,36 +12,34 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class OrderIDService {
 
-    private final OrderIDDao orderIDDao;
+  private final OrderIDDao orderIDDao;
 
-    public List<OrderID> getAllOrder() {
-        return orderIDDao.findAll();
-    }
+  public List<OrderID> getAllOrder() {
+    return orderIDDao.findAll();
+  }
 
-    public Optional<OrderID> getOrderById(Integer id) {
-        return orderIDDao.findById(id);
-    }
+  public Optional<OrderID> getOrderById(Integer id) {
+    return orderIDDao.findById(id);
+  }
 
-    public OrderID getOrderName(String name) {
-        return orderIDDao.getByNumberorder(name);
-    }
+  public OrderID getOrderName(String name) {
+    return orderIDDao.getByNumberorder(name);
+  }
 
-    public void createNewOrder(OrderID orderID) {
-        orderIDDao.save(orderID);
-    }
+  public void createNewOrder(OrderID orderID) {
+    orderIDDao.save(orderID);
+  }
 
-    public void delete(int id) {
-        orderIDDao.deleteById(id);
-    }
+  public void delete(int id) {
+    orderIDDao.deleteById(id);
+  }
 
-    public void deleteByName(String numberOrder) {
+  public void deleteByName(String numberOrder) {}
 
-    }
-
-    public static void updateOrderId(int id, OrderID orderID, OrderIDService orderIDService) {
-        OrderID newOrderID = new OrderID();
-        newOrderID.setId(id);
-        newOrderID.setNumberorder(orderID.getNumberorder());
-        orderIDService.createNewOrder(newOrderID);
-    }
+  public static void updateOrderId(int id, OrderID orderID, OrderIDService orderIDService) {
+    OrderID newOrderID = new OrderID();
+    newOrderID.setId(id);
+    newOrderID.setNumberorder(orderID.getNumberorder());
+    orderIDService.createNewOrder(newOrderID);
+  }
 }

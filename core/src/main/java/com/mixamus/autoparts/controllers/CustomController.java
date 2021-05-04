@@ -13,15 +13,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CustomController {
 
-    private final CustomService customService;
+  private final CustomService customService;
 
-    @GetMapping("/custom")
-    public List<Part> customMethod() {
-        return customService.getCustomParts();
-    }
+  @GetMapping("/custom")
+  public List<Part> customMethod() {
+    return customService.getCustomParts();
+  }
 
-    @GetMapping("/custom/{id}")
-    public Part getPartById(@PathVariable int id) {
-        return customService.getPartById(id);
-    }
+  @GetMapping("/custom/{id}")
+  public Part getPartById(@PathVariable int id) {
+    return customService.getPartById(id);
+  }
 }
