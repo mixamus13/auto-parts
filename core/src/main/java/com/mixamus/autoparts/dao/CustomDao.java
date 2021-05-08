@@ -18,7 +18,8 @@ public class CustomDao {
   private final JdbcTemplate jdbcTemplate;
 
   public List<Part> getCustomParts() {
-    return namedParameterJdbcTemplate.query("select * from Part", new BeanPropertyRowMapper<>(Part.class));
+    return namedParameterJdbcTemplate.query(
+      "select * from Part", new BeanPropertyRowMapper<>(Part.class));
   }
 
   private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
