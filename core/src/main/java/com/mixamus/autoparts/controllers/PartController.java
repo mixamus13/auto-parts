@@ -1,20 +1,27 @@
 package com.mixamus.autoparts.controllers;
 
+import static org.springframework.hateoas.EntityModel.of;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import com.mixamus.autoparts.domain.Part;
 import com.mixamus.autoparts.dto.PartDtoV1;
 import com.mixamus.autoparts.dto.PartDtoV2;
 import com.mixamus.autoparts.exceptions.PartNotFoundException;
 import com.mixamus.autoparts.service.PartsService;
+import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
-
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
@@ -27,19 +34,11 @@ public class PartController {
     return partsService.getAllParts();
   }
 
-  /**
-   * Get part from id Hateoas.
-   *
-   * @param id number of part.
-   * @return part with all data.
-   */
   @GetMapping("/parts/hat/{id}")
   EntityModel<Part> getPartByIdHateoas(@PathVariable int id) {
-
     Part part = partsService.getPartById(id)
       .orElseThrow(() -> new PartNotFoundException(id));
-
-    return EntityModel.of(part,
+    return of(part,
       linkTo(methodOn(PartController.class).getPartById(id)).withSelfRel(),
       linkTo(methodOn(PartController.class).getAllParts()).withRel("parts"));
   }
@@ -55,23 +54,11 @@ public class PartController {
     return partsService.createPart(part);
   }
 
-  /**
-   * Update part by id V1.
-   *
-   * @param id        part.
-   * @param partDtoV1 part's PartDtoV1.
-   */
   @PutMapping("/parts/v1/{id}")
   public void updatePartById(@PathVariable int id, @RequestBody PartDtoV1 partDtoV1) {
     partsService.updatePartByIdV1(id, partDtoV1, partsService);
   }
 
-  /**
-   * Update part by id V1.
-   *
-   * @param id        part.
-   * @param partDtoV2 part's PartDtoV2.
-   */
   @PutMapping("/parts/v2/{id}")
   public void updatePartById(@PathVariable int id, @RequestBody PartDtoV2 partDtoV2) {
     partsService.updatePartByIdV2(id, partDtoV2, partsService);
@@ -81,7 +68,6 @@ public class PartController {
   public void deletePartById(@PathVariable int id) {
     partsService.deleteById(id);
   }
-
 
   @GetMapping("/parts/find{namePart}")
   public boolean findPartByStatus(@PathVariable String namePart) {
