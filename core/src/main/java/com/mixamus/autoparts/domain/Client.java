@@ -20,7 +20,6 @@ public class Client {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @EqualsAndHashCode.Include
   int id;
-
   String username;
   String firstname;
   String lastname;
