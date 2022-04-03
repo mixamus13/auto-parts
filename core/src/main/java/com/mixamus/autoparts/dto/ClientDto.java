@@ -2,7 +2,7 @@ package com.mixamus.autoparts.dto;
 
 import lombok.*;
 
-@Data
+@Builder
 @RequiredArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode

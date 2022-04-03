@@ -26,7 +26,8 @@ public class CheckOrderNumberService {
         var orderName = orderIDService.getOrderName(numberorder);
         if (orderName == null) return null;
         var parts = orderName.getPart();
-        return parts.stream().filter(p -> p.getAvailability().equals(NON_STOCK))
+        return parts.stream()
+            .filter(p -> p.getAvailability().equals(NON_STOCK))
             .collect(toList());
     }
 }

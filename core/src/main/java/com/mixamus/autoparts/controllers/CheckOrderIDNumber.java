@@ -17,13 +17,13 @@ import java.util.List;
 @RequestMapping("check/")
 public class CheckOrderIDNumber {
 
-  private final KafkaTemplate<String, String> kafkaTemplate;
-  private final CheckOrderNumberService checkOrderNumberService;
-  private static final String TOPIC = "kafka_example";
+    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final CheckOrderNumberService checkOrderNumberService;
+    private static final String TOPIC = "kafka_example";
 
-  @GetMapping("number/")
-  public List<Part> getOrderByIdAvailablePart(@Valid @RequestParam String numberorder) {
-    kafkaTemplate.send(TOPIC, numberorder);
-    return checkOrderNumberService.getMissingPartsByOrder(numberorder);
-  }
+    @GetMapping("number/")
+    public List<Part> getOrderByIdAvailablePart(@Valid @RequestParam String numberOrder) {
+        kafkaTemplate.send(TOPIC, numberOrder);
+        return checkOrderNumberService.getMissingPartsByOrder(numberOrder);
+    }
 }
