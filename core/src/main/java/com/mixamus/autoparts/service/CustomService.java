@@ -11,13 +11,13 @@ import java.util.List;
 @Service
 public class CustomService {
 
-  private final CustomDao customDao;
+    private final CustomDao customDao;
 
-  public List<Part> getCustomParts() {
-    return customDao.getCustomParts();
-  }
+    public List<Part> getCustomParts() {
+        return customDao.getCustomParts();
+    }
 
-  public Part getPartById(int id) {
-    return customDao.getPartById(id);
-  }
+    public Part getPartById(int id) {
+        return customDao.getPartById(id);
+    }
 }
