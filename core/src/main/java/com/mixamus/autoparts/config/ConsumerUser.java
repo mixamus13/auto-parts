@@ -1,14 +1,16 @@
 package com.mixamus.autoparts.config;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 import static com.mixamus.autoparts.controllers.ProducerUser.TOPIC_NAME;
 
 @Component
-@Slf4j
 public class ConsumerUser {
+
+    private final Logger logger = LoggerFactory.getLogger(ConsumerUser.class);
 
     /**
      * <b>group.id</b> указывает name group consumers, к которой принадлежит потребитель Kafka.
@@ -20,7 +22,7 @@ public class ConsumerUser {
      */
     @KafkaListener(topics = TOPIC_NAME, groupId = "shipping_group")
     public void listenForShipping(String message) {
-        log.info("This is my message from listenForShipping ---1---> " + message);
+        logger.info("This is my message from listenForShipping ---1---> {}", message);
     }
 
     /**
@@ -30,16 +32,16 @@ public class ConsumerUser {
      */
     @KafkaListener(topics = TOPIC_NAME, groupId = "notification_group")
     public void listenForNotification(String message) {
-        log.info("This is my message from listenForNotification ---2---> " + message);
+        logger.info("This is my message from listenForNotification ---2---> {}", message);
     }
 
     @KafkaListener(topics = TOPIC_NAME, groupId = "notification_group")
     public void listenForOne(String message) {
-        log.info("This is my message from listenForOne ---2---> " + message);
+        logger.info("This is my message from listenForOne ---2---> {}", message);
     }
 
     @KafkaListener(topics = TOPIC_NAME, groupId = "notification_group")
     public void listenForTwo(String message) {
-        log.info("This is my message from listenForTwo ---2---> " + message);
+        logger.info("This is my message from listenForTwo ---2---> {}", message);
     }
 }
